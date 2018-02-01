@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainw</class>
+ <widget class="QMainWindow" name="mainw">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1092</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AUNTY</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>minimalist_gengar_icon__free_to_use__by_jedflah-dadvg7c.png</normaloff>minimalist_gengar_icon__free_to_use__by_jedflah-dadvg7c.png</iconset>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>721</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox { 
+     border: 2px solid gray; 
+     border-radius: 3px; 
+ } </string>
+    </property>
+    <property name="title">
+     <string>Automata</string>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>20</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>document-open.png</normaloff>document-open.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>document-save.png</normaloff>document-save.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>document-new.png</normaloff>document-new.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>250</y>
+       <width>99</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>250</y>
+       <width>81</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Duplicate</string>
+     </property>
+    </widget>
+    <widget class="QTreeWidget" name="treeWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>181</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Automata</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>Automaton1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (1)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (2)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (3)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (4)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (5)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (6)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (7)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (8)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (9)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (10)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Automaton1 (11)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>10</y>
+       <width>511</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Source code</string>
+      </attribute>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>481</width>
+         <height>281</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Graph render</string>
+      </attribute>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>481</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>minimalist_gengar_icon__free_to_use__by_jedflah-dadvg7c.png</pixmap>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>10</y>
+      <width>341</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox { 
+     border: 2px solid gray; 
+     border-radius: 3px; 
+ } </string>
+    </property>
+    <property name="title">
+     <string>Analysis</string>
+    </property>
+    <widget class="QTreeWidget" name="treeWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>321</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>State/Variable</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GoC/Value</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>q39</string>
+      </property>
+      <property name="text">
+       <string>0.586</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>min</string>
+       </property>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>branchGoC</string>
+       </property>
+       <property name="text">
+        <string>0.721</string>
+       </property>
+      </item>
+     </item>
+    </widget>
+    <widget class="QTreeWidget" name="treeWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>310</y>
+       <width>321</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Registered outputs</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>!ok(2,0.09)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>!recordAlarm(2,0.15)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>!recordAlarm(3,0.15)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_15">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>540</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Clear selected</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>540</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Clear all</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>360</y>
+      <width>721</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox { 
+     border: 2px solid gray; 
+     border-radius: 3px; 
+ } </string>
+    </property>
+    <property name="title">
+     <string>Trace generation</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>document-open.png</normaloff>document-open.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>30</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>document-save.png</normaloff>document-save.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>document-new.png</normaloff>document-new.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>200</y>
+       <width>99</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+    </widget>
+    <widget class="QTreeWidget" name="treeWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>181</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Traces</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>Trace1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trace2</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>81</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Duplicate</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>481</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;?checkGender(0), ?checkAge(69), ?minute(1), ?readBPM(74), ?readRR(811), ?readRR(817), ?readRR(789), ?readRR(792), ?readRR(789), ?readRR(814), ?readRR(653), ?readRR(997), ?readRR(844), ?readRR(811), ?readRR(792), ?readRR(767), ?readRR(842), ?readRR(853), ?readRR(822), ?readRR(828), ?readRR(825), ?readRR(797), ?readRR(792), ?readRR(794), ?readRR(819), ?readRR(869), ?readRR(825), ?readRR(783), ?readRR(786), ?readRR(781), ?readRR(789), ?readRR(808), ?readRR(819), ?readRR(828), ?readRR(844), ?readRR(803), ?readRR(778), ?readRR(800), ?readRR(786), ?readRR(858), ?readRR(842), ?readRR(828), ?readRR(800), ?readRR(833), ?readRR(797), ?readRR(783), ?readRR(822), ?readRR(844), ?readRR(878), ?readRR(828), ?readRR(775), ?readRR(806), ?readRR(811), ?readRR(794), ?readRR(836), ?readRR(833), ?readRR(825), ?readRR(811), ?readRR(783), ?readRR(783), ?readRR(808), ?readRR(844), ?readRR(833), ?readRR(822), ?readRR(814), ?readRR(775), ?readRR(794), ?readRR(781), ?readRR(797), ?readRR(853), ?readRR(847), ?readRR(822), ?readRR(789), ?readRR(783), ?readRR(786), ?readRR(814), ?readRR(814), ?readRR(847), ?noMorePendingRR(1), ?minute(2), ?readBPM(74), ?readRR(836), ?readRR(811), ?readRR(781), ?readRR(772), ?readRR(789), ?readRR(803), ?readRR(839), ?readRR(825), ?readRR(817), ?readRR(775), ?readRR(797), ?readRR(792), ?readRR(800), ?readRR(817), ?readRR(856), ?readRR(831), ?readRR(789), ?readRR(781), ?readRR(792), ?readRR(831), ?readRR(825), ?readRR(828), ?readRR(833), ?readRR(822), ?readRR(797), ?readRR(781), ?readRR(792), ?readRR(811), ?readRR(861), ?readRR(847), ?readRR(817), ?readRR(792), ?readRR(789), ?readRR(792), ?readRR(811), ?readRR(825), ?readRR(844), ?readRR(856), ?readRR(808), ?readRR(769), ?readRR(797), ?readRR(800), ?readRR(819), ?readRR(836), ?readRR(819), ?readRR(828), ?readRR(800), ?readRR(781), ?readRR(778), ?readRR(811), ?readRR(825), ?readRR(864), ?readRR(828), ?readRR(792), ?readRR(789), ?readRR(800), ?readRR(792), ?readRR(814), ?readRR(836), ?readRR(836), ?readRR(822), ?readRR(769), ?readRR(753), ?readRR(797), ?readRR(819), ?readRR(811), ?readRR(833), ?readRR(828), ?readRR(783), ?readRR(739), ?readRR(833), ?readRR(781), ?readRR(831), ?readRR(864), ?noMorePendingRR(2), ?minute(3), ?readBPM(76), ?readRR(825), ?readRR(800), ?readRR(781), ?readRR(783), ?readRR(800), ?readRR(797), ?readRR(814), ?readRR(844), ?readRR(828), ?readRR(778), ?readRR(758), ?readRR(783), ?readRR(769), ?readRR(828), ?readRR(819), ?readRR(806), ?readRR(786), ?readRR(786), ?readRR(778), ?readRR(761), ?readRR(789), ?readRR(814), ?readRR(850), ?readRR(808), ?readRR(772), ?readRR(778), ?readRR(789), ?readRR(783), ?readRR(800), ?readRR(819), ?readRR(822), ?readRR(803), ?readRR(775), ?readRR(772), ?readRR(772), ?readRR(808), ?readRR(808), ?readRR(825), ?readRR(800), ?readRR(772), ?readRR(775), ?readRR(775), ?readRR(778), ?readRR(792), ?readRR(822), ?readRR(825), ?readRR(783), ?readRR(753), ?readRR(772), ?readRR(783), ?readRR(792), ?readRR(814), ?readRR(828), ?readRR(828), ?readRR(803), ?readRR(769), ?readRR(772), ?readRR(800), ?readRR(811), ?readRR(836), ?readRR(844), ?readRR(800), ?readRR(794), ?readRR(800), ?readRR(786), ?readRR(792), ?readRR(831), ?readRR(844), ?readRR(836), ?readRR(800), ?readRR(756), ?readRR(797), ?readRR(803), ?readRR(811), ?readRR(825), ?readRR(828), ?noMorePendingRR(3), ?minute(4), ?readBPM(74), ?readRR(806), ?readRR(794), ?readRR(772), ?readRR(775), ?readRR(825), ?readRR(519), ?readRR(942), ?readRR(839), ?readRR(819), ?readRR(778), ?readRR(819), ?readRR(808), ?readRR(811), ?readRR(847), ?readRR(869), ?readRR(817), ?readRR(767), ?readRR(789), ?readRR(792), ?readRR(831), ?readRR(828), ?readRR(833), ?readRR(847), ?readRR(817), ?readRR(775), ?readRR(794), ?readRR(819), ?readRR(844), ?readRR(858), ?readRR(828), ?readRR(797), ?readRR(794), ?readRR(789), ?readRR(608), ?readRR(964), ?readRR(831), ?readRR(836), ?readRR(836), ?readRR(781), ?readRR(753), ?readRR(800), ?readRR(811), ?readRR(828), ?readRR(806), ?readRR(828), ?readRR(800), ?readRR(792), ?readRR(764), ?readRR(797), ?readRR(839), ?readRR(839), ?readRR(833), ?readRR(811), ?readRR(797), ?readRR(783), ?readRR(797), ?readRR(811), ?readRR(831), ?readRR(844), ?readRR(842), ?readRR(803), ?readRR(789), ?readRR(783), ?readRR(839), ?readRR(861), ?readRR(844), ?readRR(836), ?readRR(836), ?readRR(811), ?readRR(772), ?readRR(808), ?readRR(836), ?readRR(853), ?readRR(839), ?noMorePendingRR(4), ?minute(5), ?readBPM(74),  ?readRR(825)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>120</y>
+       <width>481</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;?readRR(800), ?readRR(794), ?readRR(806), ?readRR(806), ?readRR(831), ?readRR(842), ?readRR(833), ?readRR(800), ?readRR(783), ?readRR(789), ?readRR(828), ?readRR(844), ?readRR(819), ?readRR(847), ?readRR(808), ?readRR(781), ?readRR(789), ?readRR(811), ?readRR(819), ?readRR(869), ?readRR(836), ?readRR(800), ?readRR(803), ?readRR(775), ?readRR(808), ?readRR(833), ?readRR(839), ?readRR(842), ?readRR(856), ?readRR(794), ?readRR(772), ?readRR(778), ?readRR(814), ?readRR(853), ?readRR(828), ?readRR(819), ?readRR(814), ?readRR(811), ?readRR(781), ?readRR(781), ?readRR(811), ?readRR(831), ?readRR(550), ?readRR(975), ?readRR(797), ?readRR(775), ?readRR(792), ?readRR(806), ?readRR(800), ?readRR(814), ?readRR(800), ?readRR(817), ?readRR(783), ?readRR(764), ?readRR(786), ?readRR(822), ?readRR(828), ?readRR(817), ?readRR(833), ?readRR(783), ?readRR(794), ?readRR(800), ?readRR(800), ?readRR(833), ?readRR(856), ?readRR(828), ?readRR(800), ?readRR(783), ?readRR(769), ?readRR(808), ?readRR(828), ?readRR(822), ?readRR(825), ?noMorePendingRR(5)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_11">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>190</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>arrow-right.png</normaloff>arrow-right.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_12">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>190</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>arrow-left-double.png</normaloff>arrow-left-double.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>190</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>arrow-right-double.png</normaloff>arrow-right-double.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_14">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>190</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>arrow-left.png</normaloff>arrow-left.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>10</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Applied trace</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>100</y>
+       <width>101</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pending trace</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1092</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCristo">
+    <property name="title">
+     <string>Automata</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+   </widget>
+   <widget class="QMenu" name="menuEsto_es_un_cristo">
+    <property name="title">
+     <string>Trace generation</string>
+    </property>
+    <addaction name="actionGenerate_trace"/>
+   </widget>
+   <widget class="QMenu" name="menuAnalysis">
+    <property name="title">
+     <string>Analysis</string>
+    </property>
+    <addaction name="actionStep_by_step"/>
+    <addaction name="actionResults_table"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <addaction name="menuCristo"/>
+   <addaction name="menuEsto_es_un_cristo"/>
+   <addaction name="menuAnalysis"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionMaestra">
+   <property name="text">
+    <string>Maestra</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionGenerate_trace">
+   <property name="text">
+    <string>Trace from patient</string>
+   </property>
+  </action>
+  <action name="actionStep_by_step">
+   <property name="text">
+    <string>Step by step</string>
+   </property>
+  </action>
+  <action name="actionResults_table">
+   <property name="text">
+    <string>Results table</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
