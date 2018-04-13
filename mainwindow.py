@@ -8,6 +8,10 @@
 
 from PyQt4 import QtCore, QtGui
 
+from metamodelo import *
+
+import pygraphviz as pgv
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -22,7 +26,19 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+    
 class Ui_mainw(object):
+
+    def updateAutom(self):
+        G = pgv.AGraph( \
+            automata2dot( \
+                mm.model_from_str(self.plainTextEdit.toPlainText()) \
+            ) \
+        )
+        G.layout(prog='dot')
+        G.draw('tmp/autom.png')
+        self.pviewer.setPhoto(QtGui.QPixmap('tmp/autom.png'))
+        
     def setupUi(self, mainw):
         mainw.setObjectName(_fromUtf8("mainw"))
         mainw.resize(1092, 640)
@@ -94,13 +110,15 @@ class Ui_mainw(object):
         self.plainTextEdit = QtGui.QPlainTextEdit(self.tab_3)
         self.plainTextEdit.setGeometry(QtCore.QRect(10, 10, 481, 281))
         self.plainTextEdit.setObjectName(_fromUtf8("plainTextEdit"))
+        self.plainTextEdit.setPlainText(automstr)
+        
         self.tabWidget_2.addTab(self.tab_3, _fromUtf8(""))
         self.tab_4 = QtGui.QWidget()
         self.tab_4.setObjectName(_fromUtf8("tab_4"))
 
         self.pviewer = PhotoViewer(self.tab_4)
         self.pviewer.setGeometry(QtCore.QRect(10, 10, 481, 281))
-        self.pviewer.setPhoto(QtGui.QPixmap('automatadot.png'))
+        self.pviewer.setPhoto(QtGui.QPixmap('tmp/autom.png'))
         self.pviewer.setObjectName(_fromUtf8("pviewer"))
 
         self.tabWidget_2.addTab(self.tab_4, _fromUtf8(""))
@@ -249,8 +267,17 @@ class Ui_mainw(object):
 
         self.retranslateUi(mainw)
         self.tabWidget_2.setCurrentIndex(1)
+
+
+        def foo(e):
+            self.updateAutom()
+        
+        self.tabWidget_2.currentChanged.connect(foo)
+        
         QtCore.QMetaObject.connectSlotsByName(mainw)
 
+
+        
     def retranslateUi(self, mainw):
         mainw.setWindowTitle(_translate("mainw", "AUNTY", None))
         self.groupBox.setTitle(_translate("mainw", "Automata", None))
