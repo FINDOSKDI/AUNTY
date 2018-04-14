@@ -40,6 +40,8 @@ class Ui_mainw(object):
         self.pviewer.setPhoto(QtGui.QPixmap('tmp/autom.png'))
         
     def setupUi(self, mainw):
+        def wip(e):
+            print('work in progress')
         mainw.setObjectName(_fromUtf8("mainw"))
         mainw.resize(1092, 640)
         icon = QtGui.QIcon()
@@ -90,18 +92,18 @@ class Ui_mainw(object):
         self.treeWidget.setGeometry(QtCore.QRect(10, 70, 181, 181))
         self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
         item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
         self.tabWidget_2 = QtGui.QTabWidget(self.groupBox)
         self.tabWidget_2.setGeometry(QtCore.QRect(200, 10, 511, 331))
         self.tabWidget_2.setObjectName(_fromUtf8("tabWidget_2"))
@@ -179,7 +181,7 @@ class Ui_mainw(object):
         self.treeWidget_2.setGeometry(QtCore.QRect(10, 80, 181, 121))
         self.treeWidget_2.setObjectName(_fromUtf8("treeWidget_2"))
         item_0 = QtGui.QTreeWidgetItem(self.treeWidget_2)
-        item_0 = QtGui.QTreeWidgetItem(self.treeWidget_2)
+        # item_0 = QtGui.QTreeWidgetItem(self.treeWidget_2)
         self.pushButton_4 = QtGui.QPushButton(self.groupBox_2)
         self.pushButton_4.setGeometry(QtCore.QRect(10, 200, 81, 27))
         self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
@@ -266,8 +268,25 @@ class Ui_mainw(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(mainw)
-        self.tabWidget_2.setCurrentIndex(1)
+        self.tabWidget_2.setCurrentIndex(0)
 
+
+        self.pushButton.clicked.connect(wip)
+        self.pushButton_10.clicked.connect(wip)
+        self.pushButton_11.clicked.connect(wip)
+        self.pushButton_12.clicked.connect(wip)
+        self.pushButton_13.clicked.connect(wip)
+        self.pushButton_14.clicked.connect(wip)
+        self.pushButton_15.clicked.connect(wip)
+        self.pushButton_16.clicked.connect(wip)
+        self.pushButton_2.clicked.connect(wip)
+        self.pushButton_3.clicked.connect(wip)
+        self.pushButton_4.clicked.connect(wip)
+        self.pushButton_5.clicked.connect(wip)
+        self.pushButton_6.clicked.connect(wip)
+        self.pushButton_7.clicked.connect(wip)
+        self.pushButton_8.clicked.connect(wip)
+        self.pushButton_9.clicked.connect(wip)
 
         def foo(e):
             self.updateAutom()
@@ -275,6 +294,7 @@ class Ui_mainw(object):
         self.tabWidget_2.currentChanged.connect(foo)
         
         QtCore.QMetaObject.connectSlotsByName(mainw)
+
 
 
         
@@ -287,18 +307,18 @@ class Ui_mainw(object):
         __sortingEnabled = self.treeWidget.isSortingEnabled()
         self.treeWidget.setSortingEnabled(False)
         self.treeWidget.topLevelItem(0).setText(0, _translate("mainw", "Automaton1", None))
-        self.treeWidget.topLevelItem(1).setText(0, _translate("mainw", "Automaton2", None))
-        self.treeWidget.topLevelItem(2).setText(0, _translate("mainw", "Automaton1 (1)", None))
-        self.treeWidget.topLevelItem(3).setText(0, _translate("mainw", "Automaton1 (2)", None))
-        self.treeWidget.topLevelItem(4).setText(0, _translate("mainw", "Automaton1 (3)", None))
-        self.treeWidget.topLevelItem(5).setText(0, _translate("mainw", "Automaton1 (4)", None))
-        self.treeWidget.topLevelItem(6).setText(0, _translate("mainw", "Automaton1 (5)", None))
-        self.treeWidget.topLevelItem(7).setText(0, _translate("mainw", "Automaton1 (6)", None))
-        self.treeWidget.topLevelItem(8).setText(0, _translate("mainw", "Automaton1 (7)", None))
-        self.treeWidget.topLevelItem(9).setText(0, _translate("mainw", "Automaton1 (8)", None))
-        self.treeWidget.topLevelItem(10).setText(0, _translate("mainw", "Automaton1 (9)", None))
-        self.treeWidget.topLevelItem(11).setText(0, _translate("mainw", "Automaton1 (10)", None))
-        self.treeWidget.topLevelItem(12).setText(0, _translate("mainw", "Automaton1 (11)", None))
+        # self.treeWidget.topLevelItem(1).setText(0, _translate("mainw", "Automaton2", None))
+        # self.treeWidget.topLevelItem(2).setText(0, _translate("mainw", "Automaton1 (1)", None))
+        # self.treeWidget.topLevelItem(3).setText(0, _translate("mainw", "Automaton1 (2)", None))
+        # self.treeWidget.topLevelItem(4).setText(0, _translate("mainw", "Automaton1 (3)", None))
+        # self.treeWidget.topLevelItem(5).setText(0, _translate("mainw", "Automaton1 (4)", None))
+        # self.treeWidget.topLevelItem(6).setText(0, _translate("mainw", "Automaton1 (5)", None))
+        # self.treeWidget.topLevelItem(7).setText(0, _translate("mainw", "Automaton1 (6)", None))
+        # self.treeWidget.topLevelItem(8).setText(0, _translate("mainw", "Automaton1 (7)", None))
+        # self.treeWidget.topLevelItem(9).setText(0, _translate("mainw", "Automaton1 (8)", None))
+        # self.treeWidget.topLevelItem(10).setText(0, _translate("mainw", "Automaton1 (9)", None))
+        # self.treeWidget.topLevelItem(11).setText(0, _translate("mainw", "Automaton1 (10)", None))
+        # self.treeWidget.topLevelItem(12).setText(0, _translate("mainw", "Automaton1 (11)", None))
         self.treeWidget.setSortingEnabled(__sortingEnabled)
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_3), _translate("mainw", "Source code", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_4), _translate("mainw", "Graph render", None))
@@ -329,19 +349,22 @@ class Ui_mainw(object):
         __sortingEnabled = self.treeWidget_2.isSortingEnabled()
         self.treeWidget_2.setSortingEnabled(False)
         self.treeWidget_2.topLevelItem(0).setText(0, _translate("mainw", "Trace1", None))
-        self.treeWidget_2.topLevelItem(1).setText(0, _translate("mainw", "Trace2", None))
+        # self.treeWidget_2.topLevelItem(1).setText(0, _translate("mainw", "Trace2", None))
         self.treeWidget_2.setSortingEnabled(__sortingEnabled)
         self.pushButton_4.setText(_translate("mainw", "Duplicate", None))
         self.textBrowser.setHtml(_translate("mainw", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">?checkGender(0), ?checkAge(69), ?minute(1), ?readBPM(74), ?readRR(811), ?readRR(817), ?readRR(789), ?readRR(792), ?readRR(789), ?readRR(814), ?readRR(653), ?readRR(997), ?readRR(844), ?readRR(811), ?readRR(792), ?readRR(767), ?readRR(842), ?readRR(853), ?readRR(822), ?readRR(828), ?readRR(825), ?readRR(797), ?readRR(792), ?readRR(794), ?readRR(819), ?readRR(869), ?readRR(825), ?readRR(783), ?readRR(786), ?readRR(781), ?readRR(789), ?readRR(808), ?readRR(819), ?readRR(828), ?readRR(844), ?readRR(803), ?readRR(778), ?readRR(800), ?readRR(786), ?readRR(858), ?readRR(842), ?readRR(828), ?readRR(800), ?readRR(833), ?readRR(797), ?readRR(783), ?readRR(822), ?readRR(844), ?readRR(878), ?readRR(828), ?readRR(775), ?readRR(806), ?readRR(811), ?readRR(794), ?readRR(836), ?readRR(833), ?readRR(825), ?readRR(811), ?readRR(783), ?readRR(783), ?readRR(808), ?readRR(844), ?readRR(833), ?readRR(822), ?readRR(814), ?readRR(775), ?readRR(794), ?readRR(781), ?readRR(797), ?readRR(853), ?readRR(847), ?readRR(822), ?readRR(789), ?readRR(783), ?readRR(786), ?readRR(814), ?readRR(814), ?readRR(847), ?noMorePendingRR(1), ?minute(2), ?readBPM(74), ?readRR(836), ?readRR(811), ?readRR(781), ?readRR(772), ?readRR(789), ?readRR(803), ?readRR(839), ?readRR(825), ?readRR(817), ?readRR(775), ?readRR(797), ?readRR(792), ?readRR(800), ?readRR(817), ?readRR(856), ?readRR(831), ?readRR(789), ?readRR(781), ?readRR(792), ?readRR(831), ?readRR(825), ?readRR(828), ?readRR(833), ?readRR(822), ?readRR(797), ?readRR(781), ?readRR(792), ?readRR(811), ?readRR(861), ?readRR(847), ?readRR(817), ?readRR(792), ?readRR(789), ?readRR(792), ?readRR(811), ?readRR(825), ?readRR(844), ?readRR(856), ?readRR(808), ?readRR(769), ?readRR(797), ?readRR(800), ?readRR(819), ?readRR(836), ?readRR(819), ?readRR(828), ?readRR(800), ?readRR(781), ?readRR(778), ?readRR(811), ?readRR(825), ?readRR(864), ?readRR(828), ?readRR(792), ?readRR(789), ?readRR(800), ?readRR(792), ?readRR(814), ?readRR(836), ?readRR(836), ?readRR(822), ?readRR(769), ?readRR(753), ?readRR(797), ?readRR(819), ?readRR(811), ?readRR(833), ?readRR(828), ?readRR(783), ?readRR(739), ?readRR(833), ?readRR(781), ?readRR(831), ?readRR(864), ?noMorePendingRR(2), ?minute(3), ?readBPM(76), ?readRR(825), ?readRR(800), ?readRR(781), ?readRR(783), ?readRR(800), ?readRR(797), ?readRR(814), ?readRR(844), ?readRR(828), ?readRR(778), ?readRR(758), ?readRR(783), ?readRR(769), ?readRR(828), ?readRR(819), ?readRR(806), ?readRR(786), ?readRR(786), ?readRR(778), ?readRR(761), ?readRR(789), ?readRR(814), ?readRR(850), ?readRR(808), ?readRR(772), ?readRR(778), ?readRR(789), ?readRR(783), ?readRR(800), ?readRR(819), ?readRR(822), ?readRR(803), ?readRR(775), ?readRR(772), ?readRR(772), ?readRR(808), ?readRR(808), ?readRR(825), ?readRR(800), ?readRR(772), ?readRR(775), ?readRR(775), ?readRR(778), ?readRR(792), ?readRR(822), ?readRR(825), ?readRR(783), ?readRR(753), ?readRR(772), ?readRR(783), ?readRR(792), ?readRR(814), ?readRR(828), ?readRR(828), ?readRR(803), ?readRR(769), ?readRR(772), ?readRR(800), ?readRR(811), ?readRR(836), ?readRR(844), ?readRR(800), ?readRR(794), ?readRR(800), ?readRR(786), ?readRR(792), ?readRR(831), ?readRR(844), ?readRR(836), ?readRR(800), ?readRR(756), ?readRR(797), ?readRR(803), ?readRR(811), ?readRR(825), ?readRR(828), ?noMorePendingRR(3), ?minute(4), ?readBPM(74), ?readRR(806), ?readRR(794), ?readRR(772), ?readRR(775), ?readRR(825), ?readRR(519), ?readRR(942), ?readRR(839), ?readRR(819), ?readRR(778), ?readRR(819), ?readRR(808), ?readRR(811), ?readRR(847), ?readRR(869), ?readRR(817), ?readRR(767), ?readRR(789), ?readRR(792), ?readRR(831), ?readRR(828), ?readRR(833), ?readRR(847), ?readRR(817), ?readRR(775), ?readRR(794), ?readRR(819), ?readRR(844), ?readRR(858), ?readRR(828), ?readRR(797), ?readRR(794), ?readRR(789), ?readRR(608), ?readRR(964), ?readRR(831), ?readRR(836), ?readRR(836), ?readRR(781), ?readRR(753), ?readRR(800), ?readRR(811), ?readRR(828), ?readRR(806), ?readRR(828), ?readRR(800), ?readRR(792), ?readRR(764), ?readRR(797), ?readRR(839), ?readRR(839), ?readRR(833), ?readRR(811), ?readRR(797), ?readRR(783), ?readRR(797), ?readRR(811), ?readRR(831), ?readRR(844), ?readRR(842), ?readRR(803), ?readRR(789), ?readRR(783), ?readRR(839), ?readRR(861), ?readRR(844), ?readRR(836), ?readRR(836), ?readRR(811), ?readRR(772), ?readRR(808), ?readRR(836), ?readRR(853), ?readRR(839), ?noMorePendingRR(4), ?minute(5), ?readBPM(74),  ?readRR(825)</p></body></html>", None))
+                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", None))
+        
+
+
         self.textEdit.setHtml(_translate("mainw", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">?readRR(800), ?readRR(794), ?readRR(806), ?readRR(806), ?readRR(831), ?readRR(842), ?readRR(833), ?readRR(800), ?readRR(783), ?readRR(789), ?readRR(828), ?readRR(844), ?readRR(819), ?readRR(847), ?readRR(808), ?readRR(781), ?readRR(789), ?readRR(811), ?readRR(819), ?readRR(869), ?readRR(836), ?readRR(800), ?readRR(803), ?readRR(775), ?readRR(808), ?readRR(833), ?readRR(839), ?readRR(842), ?readRR(856), ?readRR(794), ?readRR(772), ?readRR(778), ?readRR(814), ?readRR(853), ?readRR(828), ?readRR(819), ?readRR(814), ?readRR(811), ?readRR(781), ?readRR(781), ?readRR(811), ?readRR(831), ?readRR(550), ?readRR(975), ?readRR(797), ?readRR(775), ?readRR(792), ?readRR(806), ?readRR(800), ?readRR(814), ?readRR(800), ?readRR(817), ?readRR(783), ?readRR(764), ?readRR(786), ?readRR(822), ?readRR(828), ?readRR(817), ?readRR(833), ?readRR(783), ?readRR(794), ?readRR(800), ?readRR(800), ?readRR(833), ?readRR(856), ?readRR(828), ?readRR(800), ?readRR(783), ?readRR(769), ?readRR(808), ?readRR(828), ?readRR(822), ?readRR(825), ?noMorePendingRR(5)</p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">?checkGender(0), ?checkAge(69), ?minute(1), ?readBPM(74), ?readRR(811), ?readRR(817), ?readRR(789), ?readRR(792), ?readRR(789), ?readRR(814), ?readRR(653), ?readRR(997), ?readRR(844), ?readRR(811), ?readRR(792), ?readRR(767), ?readRR(842), ?readRR(853), ?readRR(822), ?readRR(828), ?readRR(825), ?readRR(797), ?readRR(792), ?readRR(794), ?readRR(819), ?readRR(869), ?readRR(825), ?readRR(783), ?readRR(786), ?readRR(781), ?readRR(789), ?readRR(808), ?readRR(819), ?readRR(828), ?readRR(844), ?readRR(803), ?readRR(778), ?readRR(800), ?readRR(786), ?readRR(858), ?readRR(842), ?readRR(828), ?readRR(800), ?readRR(833), ?readRR(797), ?readRR(783), ?readRR(822), ?readRR(844), ?readRR(878), ?readRR(828), ?readRR(775), ?readRR(806), ?readRR(811), ?readRR(794), ?readRR(836), ?readRR(833), ?readRR(825), ?readRR(811), ?readRR(783), ?readRR(783), ?readRR(808), ?readRR(844), ?readRR(833), ?readRR(822), ?readRR(814), ?readRR(775), ?readRR(794), ?readRR(781), ?readRR(797), ?readRR(853), ?readRR(847), ?readRR(822), ?readRR(789), ?readRR(783), ?readRR(786), ?readRR(814), ?readRR(814), ?readRR(847), ?noMorePendingRR(1), ?minute(2), ?readBPM(74), ?readRR(836), ?readRR(811), ?readRR(781), ?readRR(772), ?readRR(789), ?readRR(803), ?readRR(839), ?readRR(825), ?readRR(817), ?readRR(775), ?readRR(797), ?readRR(792), ?readRR(800), ?readRR(817), ?readRR(856), ?readRR(831), ?readRR(789), ?readRR(781), ?readRR(792), ?readRR(831), ?readRR(825), ?readRR(828), ?readRR(833), ?readRR(822), ?readRR(797), ?readRR(781), ?readRR(792), ?readRR(811), ?readRR(861), ?readRR(847), ?readRR(817), ?readRR(792), ?readRR(789), ?readRR(792), ?readRR(811), ?readRR(825), ?readRR(844), ?readRR(856), ?readRR(808), ?readRR(769), ?readRR(797), ?readRR(800), ?readRR(819), ?readRR(836), ?readRR(819), ?readRR(828), ?readRR(800), ?readRR(781), ?readRR(778), ?readRR(811), ?readRR(825), ?readRR(864), ?readRR(828), ?readRR(792), ?readRR(789), ?readRR(800), ?readRR(792), ?readRR(814), ?readRR(836), ?readRR(836), ?readRR(822), ?readRR(769), ?readRR(753), ?readRR(797), ?readRR(819), ?readRR(811), ?readRR(833), ?readRR(828), ?readRR(783), ?readRR(739), ?readRR(833), ?readRR(781), ?readRR(831), ?readRR(864), ?noMorePendingRR(2), ?minute(3), ?readBPM(76), ?readRR(825), ?readRR(800), ?readRR(781), ?readRR(783), ?readRR(800), ?readRR(797), ?readRR(814), ?readRR(844), ?readRR(828), ?readRR(778), ?readRR(758), ?readRR(783), ?readRR(769), ?readRR(828), ?readRR(819), ?readRR(806), ?readRR(786), ?readRR(786), ?readRR(778), ?readRR(761), ?readRR(789), ?readRR(814), ?readRR(850), ?readRR(808), ?readRR(772), ?readRR(778), ?readRR(789), ?readRR(783), ?readRR(800), ?readRR(819), ?readRR(822), ?readRR(803), ?readRR(775), ?readRR(772), ?readRR(772), ?readRR(808), ?readRR(808), ?readRR(825), ?readRR(800), ?readRR(772), ?readRR(775), ?readRR(775), ?readRR(778), ?readRR(792), ?readRR(822), ?readRR(825), ?readRR(783), ?readRR(753), ?readRR(772), ?readRR(783), ?readRR(792), ?readRR(814), ?readRR(828), ?readRR(828), ?readRR(803), ?readRR(769), ?readRR(772), ?readRR(800), ?readRR(811), ?readRR(836), ?readRR(844), ?readRR(800), ?readRR(794), ?readRR(800), ?readRR(786), ?readRR(792), ?readRR(831), ?readRR(844), ?readRR(836), ?readRR(800), ?readRR(756), ?readRR(797), ?readRR(803), ?readRR(811), ?readRR(825), ?readRR(828), ?noMorePendingRR(3), ?minute(4), ?readBPM(74), ?readRR(806), ?readRR(794), ?readRR(772), ?readRR(775), ?readRR(825), ?readRR(519), ?readRR(942), ?readRR(839), ?readRR(819), ?readRR(778), ?readRR(819), ?readRR(808), ?readRR(811), ?readRR(847), ?readRR(869), ?readRR(817), ?readRR(767), ?readRR(789), ?readRR(792), ?readRR(831), ?readRR(828), ?readRR(833), ?readRR(847), ?readRR(817), ?readRR(775), ?readRR(794), ?readRR(819), ?readRR(844), ?readRR(858), ?readRR(828), ?readRR(797), ?readRR(794), ?readRR(789), ?readRR(608), ?readRR(964), ?readRR(831), ?readRR(836), ?readRR(836), ?readRR(781), ?readRR(753), ?readRR(800), ?readRR(811), ?readRR(828), ?readRR(806), ?readRR(828), ?readRR(800), ?readRR(792), ?readRR(764), ?readRR(797), ?readRR(839), ?readRR(839), ?readRR(833), ?readRR(811), ?readRR(797), ?readRR(783), ?readRR(797), ?readRR(811), ?readRR(831), ?readRR(844), ?readRR(842), ?readRR(803), ?readRR(789), ?readRR(783), ?readRR(839), ?readRR(861), ?readRR(844), ?readRR(836), ?readRR(836), ?readRR(811), ?readRR(772), ?readRR(808), ?readRR(836), ?readRR(853), ?readRR(839), ?noMorePendingRR(4), ?minute(5), ?readBPM(74),  ?readRR(825), ?readRR(800), ?readRR(794), ?readRR(806), ?readRR(806), ?readRR(831), ?readRR(842), ?readRR(833), ?readRR(800), ?readRR(783), ?readRR(789), ?readRR(828), ?readRR(844), ?readRR(819), ?readRR(847), ?readRR(808), ?readRR(781), ?readRR(789), ?readRR(811), ?readRR(819), ?readRR(869), ?readRR(836), ?readRR(800), ?readRR(803), ?readRR(775), ?readRR(808), ?readRR(833), ?readRR(839), ?readRR(842), ?readRR(856), ?readRR(794), ?readRR(772), ?readRR(778), ?readRR(814), ?readRR(853), ?readRR(828), ?readRR(819), ?readRR(814), ?readRR(811), ?readRR(781), ?readRR(781), ?readRR(811), ?readRR(831), ?readRR(550), ?readRR(975), ?readRR(797), ?readRR(775), ?readRR(792), ?readRR(806), ?readRR(800), ?readRR(814), ?readRR(800), ?readRR(817), ?readRR(783), ?readRR(764), ?readRR(786), ?readRR(822), ?readRR(828), ?readRR(817), ?readRR(833), ?readRR(783), ?readRR(794), ?readRR(800), ?readRR(800), ?readRR(833), ?readRR(856), ?readRR(828), ?readRR(800), ?readRR(783), ?readRR(769), ?readRR(808), ?readRR(828), ?readRR(822), ?readRR(825), ?noMorePendingRR(5)</p></body></html>", None))
         self.label_2.setText(_translate("mainw", "Applied trace", None))
         self.label_3.setText(_translate("mainw", "Pending trace", None))
         self.menuAutomata.setTitle(_translate("mainw", "Automata", None))

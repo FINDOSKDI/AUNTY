@@ -156,17 +156,6 @@ def Ceval(C):
 def transicionFV(transicion):
     return varlistFV(transicion.args ).union( VTFV(transicion.vtran) ).union( CFV(transicion.constr) )
 
-def automatonStates(automa):
-    return set([t.s1 for t in automa.tr]).union(set([t.s2 for t in automa.tr]))
-
-def actionDict(automa):
-    dic = {}
-    for t in automa.tr:
-        dic[t.act] = varlist2list(args)
-    return dic
-
-
-
 def Tstr(t):
     if tname(t) == 'R':
         return str(t.value)
@@ -205,9 +194,23 @@ ConstTail : ',' head=R;
 R    : value=FLOAT;
 """
 
+def trace2list(trace):
+    return [SimpleNamespace(act=trace.act,const=trace.const)] + trace.tail 
 
-automstr = """
-q38, ?endOfRecord(), True, [],  q115;
+def constlist2list(constlist):
+    if constlist.head == None:
+        return []
+    return [constlist.head] + [c.head for c in constlist.tail]
+
+def actionState(varlist, constlist):
+    dic = {}
+    vl = varlist2list(varlist)
+    cl = constlist2list(constlist)
+    for a,b in zip(vl,cl):
+        dic[a] = b
+    return dic
+
+automstr = """q38, ?endOfRecord(), True, [],  q115;
 q42, ?noMorePendingRR(), True, [], q43;
 q42, ?readRR(rr), True, [], q42;
 q38, ?readBPM(bpm), (63.1 <= bpm <= 70.9)^3.9, [], q42;
@@ -238,17 +241,33 @@ def automata2dot(autom):
         '"]\n'
     return res + "}"
 
-tracestr = """(?asds(55))
-"""
-
-# exe = []
-
-# trace = metamodel_from_str(tracegrammar).model_from_str(tracestr)
+tracestr = """(?asds(55))"""
 
 
-# for i in trace.tail:
-#     pass
+def automatonStates(automa):
+    return set([t.s1 for t in automa.tr]).union(set([t.s2 for t in automa.tr]))
 
+def actionDict(automa):
+    dic = {}
+    for t in automa.tr:
+        dic[t.act] = varlist2list(args)
+    return dic
+
+def outgoingDict(automa):
+    dic = {t:[] for t in automatonStates(automa)}
+    for t in automa.tr:
+        dic[t.s1] = dic[t.s1] + [t]
+    return dic
+
+def ingoingDict(automa):
+    dic = {t:[] for t in automatonStates(automa)}
+    for t in automa.tr:
+        dic[t.s2] = dic[t.s2] + [t]
+    return dic
+
+def actionStep(automa, act, confiDic, variDic):
+    actionDic = actionDic(automa)
+    return
 
 
 mm = metamodel_from_str(grammar)
