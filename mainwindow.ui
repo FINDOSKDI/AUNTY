@@ -687,7 +687,7 @@ p, li { white-space: pre-wrap; }
      <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuCristo">
+   <widget class="QMenu" name="menuAutomata">
     <property name="title">
      <string>Automata</string>
     </property>
@@ -695,7 +695,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
    </widget>
-   <widget class="QMenu" name="menuEsto_es_un_cristo">
+   <widget class="QMenu" name="menuGeneration">
     <property name="title">
      <string>Trace generation</string>
     </property>
@@ -713,8 +713,8 @@ p, li { white-space: pre-wrap; }
      <string>Help</string>
     </property>
    </widget>
-   <addaction name="menuCristo"/>
-   <addaction name="menuEsto_es_un_cristo"/>
+   <addaction name="menuAutomata"/>
+   <addaction name="menuGeneration"/>
    <addaction name="menuAnalysis"/>
    <addaction name="menuHelp"/>
   </widget>
