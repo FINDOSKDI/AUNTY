@@ -1,5 +1,12 @@
+""" TODO:
+* Construir las listas desde el modelo
+"""
+""" Observaciones:
+* Hay dificultades relativas a la sobrecarga de acciones
+"""
 from textx import metamodel_from_str
 from copy import copy
+from types import SimpleNamespace
 
 def tname(obj):
     return obj.__class__.__name__
@@ -134,7 +141,7 @@ def Csubst2(C, state):
             C = Csubst(C,k,state[k])
     return C
 
-def Hama(a,b):
+def Hama(a,b):                  #           FALTAN LAS OTRAS TNORMAS
     return (a*b)/(a+b-a*b)
 
 def Ceval(C):
@@ -202,13 +209,36 @@ def constlist2list(constlist):
         return []
     return [constlist.head] + [c.head for c in constlist.tail]
 
-def actionState(varlist, constlist):
+def actionState(varlistlist, constlistlist):
     dic = {}
-    vl = varlist2list(varlist)
-    cl = constlist2list(constlist)
+    vl = varlistlist
+    cl = constlistlist
     for a,b in zip(vl,cl):
-        dic[a] = b
+        dic[a] = b.value
     return dic
+
+def stateDic(automa):
+    res = {}
+    for tr in automa.tr:
+        res[tr.act] = varlist2list(tr.args)
+    return res
+
+
+
+def applyTrace(trace, automa, inistate): 
+    tra = trace2list(trace)
+    confiDic = {}
+    stDic = stateDic(automa)
+    for tr in automa.tr:
+        confiDic[tr.s1] = 0.0
+        confiDic[tr.s2] = 0.0
+    confiDic[inistate] = 1.0
+    for t in tra:
+        variDic = actionState( stDic[t.act],  # NECESITO DICCIONARIO ACCIONES LISTA DE VARIABLES :DONE:
+                              constlist2list(t.const))
+        # LO SIGUIENTE ES PROBAR LAS CONFIANZAS :NEXTACTION:
+        confiDic, uuu = actionStep(automa, t.act, confiDic, variDic)
+    return confiDic
 
 automstr = """q38, ?endOfRecord(), True, [],  q115;
 q42, ?noMorePendingRR(), True, [], q43;
@@ -250,7 +280,7 @@ def automatonStates(automa):
 def actionDict(automa):
     dic = {}
     for t in automa.tr:
-        dic[t.act] = varlist2list(args)
+        dic[t.act] = varlist2list(t.args)
     return dic
 
 def outgoingDict(automa):
@@ -266,11 +296,46 @@ def ingoingDict(automa):
     return dic
 
 def actionStep(automa, act, confiDic, variDic):
-    actionDic = actionDic(automa)
-    return
+    """
+    automa: model
+    act: action name
+    confiDic: dictionary mapping states to confidence values
+    variDic: dictionary mapping variable names to values 
+                ---- actionState        ( JUST ACTION VARIABLES )
+    """
+#    actionDic = actionDic(automa)  # ????
+    newConfi = {k:0.0 for k in confiDic}
+    deciDic = {k:None for k in confiDic}
+    for tr in automa.tr:
+        if tr.act == act:
+            if Hama(Ceval(Csubst2(tr.constr, variDic)), confiDic[tr.s1]) > newConfi[tr.s2]: # asdfjhieuwhfaisen
+                newConfi[tr.s2] = Hama(Ceval(Csubst2(tr.constr, variDic)), confiDic[tr.s1])
+                deciDic[tr.s2] = tr
+                
+    return newConfi, deciDic # los ! tienen C true, los ? tienen vartrans id
 
 
 mm = metamodel_from_str(grammar)
 model = mm.model_from_str(automstr)
 tr = model.tr
 
+tmm =metamodel_from_str(tracegrammar)
+tmodel = tmm.model_from_str(tracestr)
+
+
+def test_prueba1():
+
+    automataprueba1 = mm.model_from_str("""
+    s1, ?foo(x), (4.0 <= x <= 5.0)^0.5, [], s1;
+    """)
+    trazaprueba1 = tmm.model_from_str("""
+    (?foo(3.75))
+    """)
+#    C = Csubst2(automataprueba1.tr[0].constr, {'x':1.5})
+#    print(2 <C.t2.value)
+    x = applyTrace(trazaprueba1, automataprueba1, 's1')
+    print(x)
+
+
+if __name__ == "__main__":
+    test_prueba1()

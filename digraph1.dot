@@ -1,3 +1,5 @@
 digraph {
 A -> B
+B -> B
+C
 }
