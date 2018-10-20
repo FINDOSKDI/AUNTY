@@ -423,7 +423,7 @@ class PhotoViewer(QtGui.QGraphicsView):
         else:
             self._empty = True
             self.setDragMode(QtGui.QGraphicsView.NoDrag)
-            self._photo.setPixmap(QtCore.QPixmap())
+            self._photo.setPixmap(QtGui.QPixmap())
         self.fitInView()
 
     def wheelEvent(self, event):
