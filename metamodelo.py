@@ -2,65 +2,17 @@
 * Construir las listas desde el modelo
 """
 """ Observaciones:
-* Hay dificultades relativas a la sobrecarga de acciones
+* Hay dificultades relativas a la sobrecarga de acciones.
+No habra sobrecarga de acciones.
 """
 from textx import metamodel_from_str
 from copy import copy
 from types import SimpleNamespace
+from fuzzy import *
 
 def tname(obj):
     return obj.__class__.__name__
 
-def fuzzyleq(y,delta):
-    return lambda x: 1 if x <= y else \
-	0 if x > y + delta else \
-	1 - (x - y) / delta
-
-def fuzzyor(lam1, lam2):
-    return lambda x: max([lam1(x), lam2(x)])
-
-def fuzzyand(lam1, lam2):
-    return lambda x: min([lam1(x), lam2(x)])
-
-def fuzzynot(lam1):
-    return lambda x: 1 - lam1(x)
-def fuzzyeq(x,y,delta):
-    return min([fuzzyleq(y,delta)(x), fuzzyleq(x,delta)(y)])
-def fuzzygeq(z,delta):
-    return fuzzynot(fuzzyleq(z-delta,delta))
-
-def fuzzyinterval(y,z,delta):
-    return fuzzyand(fuzzyleq(y,delta),fuzzygeq(z,delta))
-
-
-grammar = """
-Automaton : tr*= Transicion ;
-C    : 'True' | B | T | Compo ;
-Compo : '(' c1=C tnorm=Tnorm c2=C ')' ; 
-Transicion: s1=ID ',' act=Action args=Varlist ',' 
-            constr=C ',' vtran=VT ',' s2=ID ';' ;
-
-Term : V | R;
-V    : name=ID | 'value=' value=FLOAT;
-R    : value=FLOAT | 'name=' name=ID;
-B    : Bleq | Bgeq | Beq;
-Bleq : '(' t1=Term '<=' t2=Term ')^' delta=FLOAT ;
-Bgeq : '(' t1=Term '>=' t2=Term ')^' delta=FLOAT ;
-Beq  : '(' t1=Term '==' t2=Term ')^' delta=FLOAT ;
-T    : '(' t1=Term '<=' t2=Term '<=' t3=Term ')^' delta=FLOAT ;
-Tnorm: 'Luka' | 'Gode' | 'Prod' | 'Hama';
-
-
-VT   : '[' ']' | '[' head=Trans tail*=TransTail ']' ;
-TransTail : ',' head=Trans;
-Trans     : c=Term '/' v=V;
-
-Varlist   : '(' ')' | '(' head=V tail*=VarTail ')';
-VarTail   : ',' head=V;
-
-
-Action    : '?' ID | '!' ID;
-"""
 
 
 def vt2list(vt):
@@ -141,8 +93,6 @@ def Csubst2(C, state):
             C = Csubst(C,k,state[k])
     return C
 
-def Hama(a,b):                  #           FALTAN LAS OTRAS TNORMAS
-    return (a*b)/(a+b-a*b)
 
 def Ceval(C):
     if C == 'True':
@@ -191,6 +141,35 @@ def C2string(C):
 def varlist2string(varlist):
     return "("+str.join(",",varlist2list(varlist))+")"
 
+grammar = """
+Automaton : tr*= Transicion ;
+C    : 'True' | B | T | Compo ;
+Compo : '(' c1=C tnorm=Tnorm c2=C ')' ; 
+Transicion: s1=ID ',' act=Action args=Varlist ',' 
+            constr=C ',' vtran=VT ',' s2=ID ';' ;
+
+Term : V | R;
+V    : name=ID | 'value=' value=FLOAT;
+R    : value=FLOAT | 'name=' name=ID;
+B    : Bleq | Bgeq | Beq;
+Bleq : '(' t1=Term '<=' t2=Term ')^' delta=FLOAT ;
+Bgeq : '(' t1=Term '>=' t2=Term ')^' delta=FLOAT ;
+Beq  : '(' t1=Term '==' t2=Term ')^' delta=FLOAT ;
+T    : '(' t1=Term '<=' t2=Term '<=' t3=Term ')^' delta=FLOAT ;
+Tnorm: 'Luka' | 'Gode' | 'Prod' | 'Hama';
+
+
+VT   : '[' ']' | '[' head=Trans tail*=TransTail ']' ;
+TransTail : ',' head=Trans;
+Trans     : c=Term '/' v=V;
+
+Varlist   : '(' ')' | '(' head=V tail*=VarTail ')';
+VarTail   : ',' head=V;
+
+
+Action    : '?' ID | '!' ID;
+"""
+
 
 tracegrammar = """
 Trace : '(' act=Action const=Constlist  ')' tail*=TraceTail;
@@ -222,8 +201,6 @@ def stateDic(automa):
     for tr in automa.tr:
         res[tr.act] = varlist2list(tr.args)
     return res
-
-
 
 def applyTrace(trace, automa, inistate): 
     tra = trace2list(trace)
