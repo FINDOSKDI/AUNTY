@@ -10,6 +10,8 @@
 from PyQt4 import QtCore, QtGui
 
 from metamodelo import *
+from handlers import *
+
 
 import pygraphviz as pgv
 
@@ -41,8 +43,6 @@ class Ui_mainw(object):
         self.pviewer.setPhoto(QtGui.QPixmap('tmp/autom.png'))
         
     def setupUi(self, mainw):
-        def wip(e):
-            print('work in progress')
         mainw.setObjectName(_fromUtf8("mainw"))
         mainw.resize(1092, 640)
         icon = QtGui.QIcon()
@@ -93,6 +93,7 @@ class Ui_mainw(object):
         self.treeWidget.setGeometry(QtCore.QRect(10, 70, 181, 181))
         self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
         item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        self.treeWidget.clicked.connect(treeadd(self.treeWidget)) # ????
         # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
         # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
         # item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
@@ -163,18 +164,18 @@ class Ui_mainw(object):
         self.pushButton_8.setIcon(icon1)
         self.pushButton_8.setIconSize(QtCore.QSize(32, 32))
         self.pushButton_8.setObjectName(_fromUtf8("pushButton_8"))
-        self.pushButton_9 = QtGui.QPushButton(self.groupBox_2)
-        self.pushButton_9.setGeometry(QtCore.QRect(90, 30, 41, 41))
-        self.pushButton_9.setText(_fromUtf8(""))
-        self.pushButton_9.setIcon(icon2)
-        self.pushButton_9.setIconSize(QtCore.QSize(32, 32))
-        self.pushButton_9.setObjectName(_fromUtf8("pushButton_9"))
-        self.pushButton_10 = QtGui.QPushButton(self.groupBox_2)
-        self.pushButton_10.setGeometry(QtCore.QRect(10, 30, 41, 41))
-        self.pushButton_10.setText(_fromUtf8(""))
-        self.pushButton_10.setIcon(icon3)
-        self.pushButton_10.setIconSize(QtCore.QSize(32, 32))
-        self.pushButton_10.setObjectName(_fromUtf8("pushButton_10"))
+#        self.pushButton_9 = QtGui.QPushButton(self.groupBox_2)
+#        self.pushButton_9.setGeometry(QtCore.QRect(90, 30, 41, 41))
+#        self.pushButton_9.setText(_fromUtf8(""))
+#        self.pushButton_9.setIcon(icon2)
+#        self.pushButton_9.setIconSize(QtCore.QSize(32, 32))
+#        self.pushButton_9.setObjectName(_fromUtf8("pushButton_9"))
+#        self.pushButton_10 = QtGui.QPushButton(self.groupBox_2)
+#        self.pushButton_10.setGeometry(QtCore.QRect(10, 30, 41, 41))
+#        self.pushButton_10.setText(_fromUtf8(""))
+#        self.pushButton_10.setIcon(icon3)
+#        self.pushButton_10.setIconSize(QtCore.QSize(32, 32))
+#        self.pushButton_10.setObjectName(_fromUtf8("pushButton_10"))
         self.pushButton_6 = QtGui.QPushButton(self.groupBox_2)
         self.pushButton_6.setGeometry(QtCore.QRect(90, 200, 99, 27))
         self.pushButton_6.setObjectName(_fromUtf8("pushButton_6"))
@@ -250,6 +251,7 @@ class Ui_mainw(object):
         self.actionSave = QtGui.QAction(mainw)
         self.actionSave.setObjectName(_fromUtf8("actionSave"))
         self.actionNew = QtGui.QAction(mainw)
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL("clicked()"), self.actionOpen.trigger) # ???
         self.actionNew.setObjectName(_fromUtf8("actionNew"))
         self.actionGenerate_trace = QtGui.QAction(mainw)
         self.actionGenerate_trace.setObjectName(_fromUtf8("actionGenerate_trace"))
@@ -257,6 +259,7 @@ class Ui_mainw(object):
         self.actionStep_by_step.setObjectName(_fromUtf8("actionStep_by_step"))
         self.actionResults_table = QtGui.QAction(mainw)
         self.actionResults_table.setObjectName(_fromUtf8("actionResults_table"))
+        self.menubar.triggered[QtGui.QAction].connect(processtrigger) # ???
         self.menuAutomata.addAction(self.actionNew)
         self.menuAutomata.addAction(self.actionOpen)
         self.menuAutomata.addAction(self.actionSave)
@@ -272,8 +275,8 @@ class Ui_mainw(object):
         self.tabWidget_2.setCurrentIndex(0)
 
 
-        self.pushButton.clicked.connect(wip)
-        self.pushButton_10.clicked.connect(wip)
+#        self.pushButton.clicked.connect(wip)
+#        self.pushButton_10.clicked.connect(wip)
         self.pushButton_11.clicked.connect(wip)
         self.pushButton_12.clicked.connect(wip)
         self.pushButton_13.clicked.connect(wip)
@@ -287,7 +290,7 @@ class Ui_mainw(object):
         self.pushButton_6.clicked.connect(wip)
         self.pushButton_7.clicked.connect(wip)
         self.pushButton_8.clicked.connect(wip)
-        self.pushButton_9.clicked.connect(wip)
+#        self.pushButton_9.clicked.connect(wip)
 
         def foo(e):
             self.updateAutom()
