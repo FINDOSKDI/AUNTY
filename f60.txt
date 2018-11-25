@@ -1,0 +1,18 @@
+q38, ?endOfRecord(), True, [],  q115;
+q42, ?noMorePendingRR(), True, [], q43;
+q42, ?readRR(rr), True, [], q42;
+q38, ?readBPM(bpm), (63.1 <= bpm <= 70.9)^3.9, [], q42;
+q0, ?checkGender(gen), (gen == 0)^0, [], q1;
+q37a, !recordAgeRange60to69(), True, [], q37b;
+q1, ?checkAge(age), (60 <= age <= 69)^13, [GoC/branchGoC], q37a;
+q37b, ?minute(m), True, [m/min], q38;
+q38, ?readBPM(bpm), (bpm >= 70.9)^3.9, [], q39;
+q38, ?readBPM(bpm), (bpm <= 63.1)^3.9, [], q39;
+q39, ?readRR(rr), (rr >= 980)^84.5, [], q40;
+q39, ?readRR(rr), (rr <= 811)^84.5, [], q40;
+q39, ?readRR(rr), True, [], q39;
+q43, !ok(min,GoC), True, [branchGoC/GoC], q37b;
+q41, !recordAlarm(min,GoC), True, [branchGoC/GoC], q37b;
+q40, ?noMorePendingRR(), True, [], q41;
+q40, ?readRR(rr), True, [], q40;
+q39, ?noMorePendingRR(), True, [], q43;
