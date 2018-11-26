@@ -16,8 +16,10 @@ def fuzzyeq(x,y,delta):
 def fuzzygeq(z,delta):
     return fuzzynot(fuzzyleq(z-delta,delta))
 
-def fuzzyinterval(y,z,delta):
+def fuzzyinterval(y,z,delta):  # z < x < y
     return fuzzyand(fuzzyleq(y,delta),fuzzygeq(z,delta))
 
 def Hama(a,b):                  #           FALTAN LAS OTRAS TNORMAS
+    if a == 0 and b == 0:
+        return 0
     return (a*b)/(a+b-a*b)
