@@ -1,6 +1,6 @@
 initial, ?checkGender(gen), (gen == 1)^0, [], femaleAgeBranch;
-femaleAgeBranch, ?checkAge(age), (60 <= age <= 69)^13, [], f60s1;
-f60s1, !ageRange60(), True, [branchGoC/GoC], f60s2;
+femaleAgeBranch, ?checkAge(age), (60 <= age <= 69)^13, [GoC/branchGoC], f60s1;
+f60s1, !ageRange60(), True, [], f60s2;
 f60s2, ?minute(m), True, [m/min], f60s3;
 f60s3, ?readBPM(bpm), (60.4 <= bpm <= 79.6)^9.6, [], f60s7;
 f60s3, ?endOfRecord(), True, [],  final;
@@ -12,7 +12,7 @@ f60s4, ?readRR(rr), (rr <= 783)^74, [], f60s5;
 f60s4, ?noMorePendingRR(), True, [], f60s8;
 f60s5, ?noMorePendingRR(), True, [], f60s6;
 f60s5, ?readRR(rr), True, [], f60s5;
-f60s6, !recordAlarm(min,GoC), True, [branchGoC/GoC], f60s2;
+f60s6, !recordAlarm(min,GoC), True, [], f60s2;
 f60s7, ?noMorePendingRR(), True, [], f60s8;
 f60s7, ?readRR(rr), True, [], f60s7;
 f60s8, !ok(min,GoC), True, [branchGoC/GoC], f60s2;
