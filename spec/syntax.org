@@ -1,0 +1,42 @@
+#+LaTeX_HEADER: \usepackage{syntax}
+
+In the following grammar, *id* denotes a set of identifiers and *float* denotes the set of floating-point values.
+
+#+BEGIN_LaTeX
+\begin{grammar}
+
+<automaton> ::= <transition> <automaton> | <transition>
+
+<transition> ::= <state>`,'<action>`('<values>`)'`,'<constr>`,'`['<vtran>`]'`,'<state>`;' 
+
+<state> ::= <id>
+
+<action> ::= `?'<id> | `!'<id>
+
+<values> ::= <float> | <float>`,'<values>
+
+<constr> ::= `True' | <bin> | <ter> | <comp>
+
+<comp> ::= `(' <constr> <tnorm> <constr> `)'
+
+<tnorm> ::= `Prod' | `Hama'
+
+<bin> ::= `(' <term> `<=' <term> `)^' <float>
+\alt `(' <term> `>=' <term> `)^' <float>
+\alt `(' <term> `==' <term> `)^' <float>
+
+<ter> ::= `(' <term> `<=' <term> `<=' <term> `)^' <float>
+
+<term> ::= <id> | <float>
+
+<vtran> ::= <term>`/'<id> | <term>`/'<id>`,'<vtran>
+
+%<statement> ::= <ident> `=' <expr> 
+%\alt `for' <ident> `=' <expr> `to' <expr> `do' <statement> 
+%\alt `{' <stat-list> `}' 
+%\alt <empty> 
+
+%<stat-list> ::= <statement> `;' <stat-list> | <statement> 
+
+\end{grammar}
+#+END_LaTeX
