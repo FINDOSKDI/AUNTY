@@ -7,11 +7,23 @@ In the following grammar, *id* denotes a set of identifiers and *float* denotes 
 
 <automaton> ::= <transition> <automaton> | <transition>
 
-<transition> ::= <state>`,'<action>`('<values>`)'`,'<constr>`,'`['<vtran>`]'`,'<state>`;' 
+<transition> ::= <state>`,'<vaction>`,'<constr>`,'`['<vtran>`]'`,'<state>`;' 
 
 <state> ::= <id>
 
-<action> ::= `?'<id> | `!'<id>
+<vaction> ::= <action>`('<variables>`)'
+
+<iaction> ::= <action>`('<values>`)'
+
+<taction> ::= <input>`('<values>`)' | <output>
+
+<action> ::= <input> | <output> 
+
+<input> ::= `?'<id>
+
+<output> ::= `!'<id>
+
+<variables> ::= <id> | <id> `,' <variables>
 
 <values> ::= <float> | <float>`,'<values>
 
@@ -31,6 +43,11 @@ In the following grammar, *id* denotes a set of identifiers and *float* denotes 
 
 <vtran> ::= <term>`/'<id> | <term>`/'<id>`,'<vtran>
 
+<iactionseq> ::= <iaction> | <iaction>,<iactionseq>
+
+<tactionseq> ::= <taction> | <taction>,<tactionseq>
+
+
 %<statement> ::= <ident> `=' <expr> 
 %\alt `for' <ident> `=' <expr> `to' <expr> `do' <statement> 
 %\alt `{' <stat-list> `}' 
@@ -40,3 +57,5 @@ In the following grammar, *id* denotes a set of identifiers and *float* denotes 
 
 \end{grammar}
 #+END_LaTeX
+
+Obs: in this version, output actions just write variables, not expressions.
