@@ -153,6 +153,7 @@ def constlist2list(constlist): # MUY DEPRECATED
         return []
     return [constlist.head] + [c.head for c in constlist.tail]
 
+# Create Action VariableState
 def actionState(varlistlist, constlistlist): # ??????
     dic = {}
     vl = varlistlist
@@ -277,7 +278,7 @@ tmodel = tmm.model_from_str(tracestr)
 
 def test_prueba1():
     automataprueba1 = mm.model_from_str("""
-    s1, ?foo(x), (4.0 <= x <= 5.0)^0.5, [], s1;
+    s1, ?foo(x), (4.0 <= x <= 5.0)^0.5, [x/y], s1;
     """)
     trazaprueba1 = tmm.model_from_str("""
     (?foo(3.75))
@@ -286,6 +287,7 @@ def test_prueba1():
 #    print(2 <C.t2.value)
     x = applyTrace(trazaprueba1, automataprueba1, 's1')
     print(x)
+    # actionStep(model,'a',{a:(1 if a == 'q1' else 0) for a in automatonStates(model)},{})
 
 
 if __name__ == "__main__":
