@@ -4,7 +4,6 @@ C    : 'True' | B | T | Compo ;
 Compo : '(' c1=C tnorm=Tnorm c2=C ')' ; 
 Transicion: s1=ID ',' act=Action args=Varlist ',' 
             constr=C ',' vtran=VT ',' s2=ID ';' ;
-
 Term : V | R;
 V    : name=ID | 'value=' value=FLOAT;
 R    : value=FLOAT | 'name=' name=ID;
@@ -14,16 +13,11 @@ Bgeq : '(' t1=Term '>=' t2=Term ')^' delta=FLOAT ;
 Beq  : '(' t1=Term '==' t2=Term ')^' delta=FLOAT ;
 T    : '(' t1=Term '<=' t2=Term '<=' t3=Term ')^' delta=FLOAT ;
 Tnorm: 'Luka' | 'Gode' | 'Prod' | 'Hama';
-
-
 VT   : '[' ']' | '[' head=Trans tail*=TransTail ']' ;
 TransTail : ',' head=Trans;
 Trans     : c=Term '/' v=V;
-
 Varlist   : '(' ')' | '(' head=V tail*=VarTail ')';
 VarTail   : ',' head=V;
-
-
 Action    : '?' ID | '!' ID;
 """
 tracegrammar = """
@@ -33,6 +27,18 @@ Action    : '?' ID | '!' ID;
 Constlist : '(' head=R tail*=ConstTail ')' | '()'; 
 ConstTail : ',' head=R;
 R    : value=FLOAT;
+"""
+alttracegrammar = """
+Trace : acts*=Action[',' eolterm];
+Action: Input | Output;
+Input: '?' name=ID '(' vals*=FLOAT[',' eolterm] ')';
+Output: '!' name=ID '(' vals*=FLOAT[',' eolterm] ')';
+"""
+alttesttracegrammar = """
+Trace : acts*=Action[',' eolterm];
+Action: Input | Output;
+Input: '?' name=ID '(' vals*=FLOAT[',' eolterm] ')';
+Output: '!' name=ID; 
 """
 altgrammar = """
 Automata: tnorm=Tnorm vars=Vars states=States inistate=ID transitions*=Transition;
@@ -65,29 +71,135 @@ VTransform:  var=ID '=' expr=Expression ;
 VTransforms:     /\s*/ vtransfms+=VTransform[',' eolterm] | ctype='Identity';
 """
 
+class Expression: 
+    def __init__(self, parent, concrete):
+        self.parent = parent
+        self.concrete = concrete
+        self.root = concrete.abstract_syntax()
+        
+class Addition(Expression):
+    def __init__(self, parent, concrete, l, r):
+        super.__init__(parent, concrete)
+        self.l = l
+        self.r = r
+        
+class Subtraction(Expression):
+    def __init__(self, parent, concrete, l, r):
+        super.__init__(parent, concrete)
+        self.l = l
+        self.r = r
+        
+class Multiplication(Expression):
+    def __init__(self, parent, concrete, l, r):
+        super.__init__(parent, concrete)
+        self.l = l
+        self.r = r
+        
+class Division(Expression):
+    def __init__(self, parent, concrete, l, r):
+        super.__init__(parent, concrete)
+        self.l = l
+        self.r = r
+
+# '+'    
 class Expression1:
     def __init__(self, parent, l, ctype, r):
-        pass
+        self.parent = parent
+        self.l = l
+        self.ctype = ctype
+        self.r = r
+    def abstract_syntax():
+        if ctype == None or ctype == []:
+            acu = Addition(None, None, l.abstract_syntax(), r[0].abstract_syntax())
+            for i in r[1:]:
+                acu = Addition(None, None, acu, i.abstract_syntax())
+            return acu
+        else:
+            return l.abstract_syntax()
+
+# '-'
 class Expression2:
     def __init__(self, parent, l, ctype, r):
-        pass
+        self.parent = parent
+        self.l = l
+        self.ctype = ctype
+        self.r = r
+    def abstract_syntax():
+        if ctype == None or ctype == []:
+            pass
+        else:
+            return l.abstract_syntax()
+
+# '*'        
 class Expression3:
     def __init__(self, parent, l, ctype, r):
-        pass
+        self.parent = parent
+        self.l = l
+        self.ctype = ctype
+        self.r = r
+    def abstract_syntax():
+        if ctype == None or ctype == []:
+            pass
+        else:
+            return l.abstract_syntax()
+
+# '/'        
 class Expression4:
     def __init__(self, parent, l, ctype, r):
-        pass
+        self.parent = parent
+        self.l = l
+        self.ctype = ctype
+        self.r = r
+    def abstract_syntax():
+        if ctype == None or ctype == []:
+            pass
+        else:
+            return l.abstract_syntax()
+
+# '()', terms        
 class Expression5:
     def __init__(self, parent, ins, ctype):
-        pass
+        self.parent = parent
+        self.ins = ins
+        self.ctype = ctype
+    def abstract_syntax():
+        if ctype == None or ctype == []:
+            return ins.abstract_syntax()
+        else
+            return ctype.abstract_syntax()
 
+class Term(Expression):
+    def __init__(self, parent, ctype):
+        super.__init__(parent, None)
+        self.parent = parent
+        self.ctype = ctype
+    def abstract_syntax():
+        return ctype
+
+class Var(Term):
+    def __init__(self, parent, var):
+        super.__init__(parent.parent, parent.ctype)
+        self.parent = parent
+        self.var = var
+    
+class Val(Term):
+    def __init__(self, parent, val):
+        super.__init__(parent.parent, parent.ctype)
+        self.parent = parent
+        self.val = val
+        
 class VTransforms:
     def __init__(self, parent, vtransfms, ctype):
         self.parent = parent
         self.ctype = ctype
         self.vtransfms = vtransfms
 
-listclasses = [VTransforms]
+listclasses = [VTransforms,
+               Expression1,
+               Expression2,
+               Expression3,
+               Expression4,
+               Expression5]
 
 def test_1():
     from textx import metamodel_from_str
@@ -116,3 +228,11 @@ GODEL
 Y=X+1 [0.2], Z<=5<=X [0.7]
 X=Y*Z/3, Y=0"""
     mm.model_from_str(d)
+    
+def test_2():
+    from textx import metamodel_from_str
+    mmt = metamodel_from_str(alttracegrammar)
+    
+def test_3():
+    from textx import metamodel_from_str
+    mmtt = metamodel_from_str(alttesttracegrammar)

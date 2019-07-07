@@ -1,0 +1,4 @@
+* mainwindow.ui
+PyQt4 gui file. Opens with Qt4 Designer.
+* mainwindow.py
+File automatically generated from mainwindow.ui. It's compiled with pyuic4.
