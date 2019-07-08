@@ -1,4 +1,5 @@
 __pycache__*
+*.pyc
 *~
 spec/syntax.tex
 spec/syntax.pdf
