@@ -8,7 +8,9 @@ def tree(row=None, col=None):
     print("tree {} {}".format(row,col))
 def treeadd(treew):
     def tree(row=None, col=None):
-        QTreeWidgetItem(treew,['new'])
-        print(treew.selectedItems()[0].setText(0,'clicked'))
+        root = QTreeWidgetItem(treew,['new', 'element'])
+        QTreeWidgetItem(root, ['new', 'subelement'])
+        print(treew.selectedItems()[0].setText(0,'element'))
+        print(treew.selectedItems()[0].setText(1,'clicked'))
     return tree
 
