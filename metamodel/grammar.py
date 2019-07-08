@@ -165,7 +165,7 @@ class Expression5:
     def abstract_syntax():
         if ctype == None or ctype == []:
             return ins.abstract_syntax()
-        else
+        else:
             return ctype.abstract_syntax()
 
 class Term(Expression):

@@ -1,4 +1,15 @@
-* mainwindow.ui
-PyQt4 gui file. Opens with Qt4 Designer.
-* mainwindow.py
-File automatically generated from mainwindow.ui. It's compiled with pyuic4.
+* gui
+** mainwindow.ui
+   PyQt4 gui file. Opens with Qt4 Designer.
+*** Classes
+**** QPlainTextEdit
+**** QTreeWidget
+**** PhotoView
+**** QTextBrowser
+**** QTextEdit
+** mainwindow.py
+   File automatically generated from mainwindow.ui. It's compiled with pyuic4.
+** handlers.py
+   Gui event handlers.
+** main.py
+   Main file. Imports and extends mainwindow.py.
