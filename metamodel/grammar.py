@@ -51,7 +51,7 @@ Transition: from=ID ',' to=ID act=Action tnorm=Tnorm constrs=Constraints vt=VTra
 Action: Input | Output;
 Input: '?' name=ID vars*=ID[',' eolterm];
 Output: '!' name=ID exprs*=Expression[',' eolterm];
-Expression: Expression1;
+Expression: concrete=Expression1;
 Expression1:       l=Expression2 (ctype='+' r=Expression1)*;
 Expression2:       l=Expression3 (ctype='-' r=Expression2)*;
 Expression3:       l=Expression4 (ctype='*' r=Expression3)*;
@@ -71,33 +71,34 @@ VTransform:  var=ID '=' expr=Expression ;
 VTransforms:     /\s*/ vtransfms+=VTransform[',' eolterm] | ctype='Identity';
 """
 
-class Expression: 
+class Expression:
     def __init__(self, parent, concrete):
         self.parent = parent
         self.concrete = concrete
-        self.root = concrete.abstract_syntax()
+        if (concrete != None):
+            self.root = concrete.abstract_syntax()
         
 class Addition(Expression):
     def __init__(self, parent, concrete, l, r):
-        super.__init__(parent, concrete)
+        super(Addition, self).__init__(parent, concrete)
         self.l = l
         self.r = r
         
 class Subtraction(Expression):
     def __init__(self, parent, concrete, l, r):
-        super.__init__(parent, concrete)
+        super(Subtraction, self).__init__(parent, concrete)
         self.l = l
         self.r = r
         
 class Multiplication(Expression):
     def __init__(self, parent, concrete, l, r):
-        super.__init__(parent, concrete)
+        super(Multiplication, self).__init__(parent, concrete)
         self.l = l
         self.r = r
         
 class Division(Expression):
     def __init__(self, parent, concrete, l, r):
-        super.__init__(parent, concrete)
+        super(Division, self).__init__(parent, concrete)
         self.l = l
         self.r = r
 
@@ -108,14 +109,14 @@ class Expression1:
         self.l = l
         self.ctype = ctype
         self.r = r
-    def abstract_syntax():
-        if ctype == None or ctype == []:
-            acu = Addition(None, None, l.abstract_syntax(), r[0].abstract_syntax())
-            for i in r[1:]:
-                acu = Addition(None, None, acu, i.abstract_syntax())
+    def abstract_syntax(self):
+        if self.ctype != None and self.ctype != []:
+            acu = Addition(None, None, self.l.abstract_syntax(), self.r[0].abstract_syntax())
+            for i in self.r[1:]:
+                acu = Addition(None, None, acu, self.i.abstract_syntax())
             return acu
         else:
-            return l.abstract_syntax()
+            return self.l.abstract_syntax()
 
 # '-'
 class Expression2:
@@ -124,11 +125,14 @@ class Expression2:
         self.l = l
         self.ctype = ctype
         self.r = r
-    def abstract_syntax():
-        if ctype == None or ctype == []:
-            pass
+    def abstract_syntax(self):
+        if self.ctype != None and self.ctype != []:
+            acu = Subtraction(None, None, self.l.abstract_syntax(), self.r[0].abstract_syntax())
+            for i in self.r[1:]:
+                acu = Subtraction(None, None, acu, self.i.abstract_syntax())
+            return acu
         else:
-            return l.abstract_syntax()
+            return self.l.abstract_syntax()
 
 # '*'        
 class Expression3:
@@ -137,11 +141,14 @@ class Expression3:
         self.l = l
         self.ctype = ctype
         self.r = r
-    def abstract_syntax():
-        if ctype == None or ctype == []:
-            pass
+    def abstract_syntax(self):
+        if self.ctype != None and self.ctype != []:
+            acu = Multiplication(None, None, self.l.abstract_syntax(), self.r[0].abstract_syntax())
+            for i in self.r[1:]:
+                acu = Multiplication(None, None, acu, i.abstract_syntax())
+            return acu
         else:
-            return l.abstract_syntax()
+            return self.l.abstract_syntax()
 
 # '/'        
 class Expression4:
@@ -150,11 +157,14 @@ class Expression4:
         self.l = l
         self.ctype = ctype
         self.r = r
-    def abstract_syntax():
-        if ctype == None or ctype == []:
-            pass
+    def abstract_syntax(self):
+        if self.ctype != None and self.ctype != []:
+            acu = Division(None, None, self.l.abstract_syntax(), self.r[0].abstract_syntax())
+            for i in self.r[1:]:
+                acu = Division(None, None, acu, i.abstract_syntax())
+            return acu
         else:
-            return l.abstract_syntax()
+            return self.l.abstract_syntax()
 
 # '()', terms        
 class Expression5:
@@ -162,29 +172,29 @@ class Expression5:
         self.parent = parent
         self.ins = ins
         self.ctype = ctype
-    def abstract_syntax():
-        if ctype == None or ctype == []:
-            return ins.abstract_syntax()
+    def abstract_syntax(self):
+        if self.ctype == None or self.ctype == []:
+            return self.ins.abstract_syntax()
         else:
-            return ctype.abstract_syntax()
+            return self.ctype.abstract_syntax()
 
 class Term(Expression):
     def __init__(self, parent, ctype):
-        super.__init__(parent, None)
+        super(Term, self).__init__(parent, None)
         self.parent = parent
         self.ctype = ctype
-    def abstract_syntax():
-        return ctype
+    def abstract_syntax(self):
+        return self.ctype
 
 class Var(Term):
     def __init__(self, parent, var):
-        super.__init__(parent.parent, parent.ctype)
+        super(Var, self).__init__(parent, None)
         self.parent = parent
         self.var = var
     
 class Val(Term):
     def __init__(self, parent, val):
-        super.__init__(parent.parent, parent.ctype)
+        super(Val, self).__init__(parent, None)
         self.parent = parent
         self.val = val
         
@@ -199,7 +209,31 @@ listclasses = [VTransforms,
                Expression2,
                Expression3,
                Expression4,
-               Expression5]
+               Expression5,
+               Expression,
+               Term,
+               Var,
+               Val]
+
+exprgrammar = """Exprgrammar: e=Expression;
+Expression: concrete=Expression1;
+Expression1:       l=Expression2 (ctype='+' r=Expression1)*;
+Expression2:       l=Expression3 (ctype='-' r=Expression2)*;
+Expression3:       l=Expression4 (ctype='*' r=Expression3)*;
+Expression4:       l=Expression5 (ctype='/' r=Expression4)*;
+Expression5:      ctype=Term | '(' ins=Expression1 ')';
+Term: ctype=Var | ctype=Val;
+Var: var=ID;
+Val: val=FLOAT;
+"""
+
+def test_expr():
+    global expr
+    from textx import metamodel_from_str
+    mm = metamodel_from_str(exprgrammar, classes=listclasses)
+    expr = mm.model_from_str('5+5-5*8/8')
+    return expr
+    
 
 def test_1():
     from textx import metamodel_from_str
@@ -236,3 +270,5 @@ def test_2():
 def test_3():
     from textx import metamodel_from_str
     mmtt = metamodel_from_str(alttesttracegrammar)
+
+
