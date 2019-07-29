@@ -36,44 +36,55 @@ Action: Input | Output;
 Input: '?' name=ID '(' vals*=FLOAT[',' eolterm] ')';
 Output: '!' (name=ID)?;
 """
-alttesttracegrammar = ("Trace : acts*=Action[',' eolterm];"
-                       "Action: Input | Output;"
-                       "Input: '?' name=ID '(' vals*=FLOAT[',' eolterm] ')';"
-                       "Output: '!' name?=ID;")
 
 class TestTraceParser:
-    pass
+    def __init__(self, classes):
+        self.classes = classes
 
-# altgrammar = ("Automata: tnorm=Tnorm varlist=Vars states=States inistate=ID transitions*=Transition;"         #
-#               "Tnorm: Product | Hamacher;"                                                                 # DONE
-#               "Product: string=/PRODUCT|Product|product/ ;"                                                # DONE
-#               "Hamacher: string=/HAMACHER|Hamacher|hamacher/ ;"                                            # DONE
-#               "Vars: /\s*/ list*=ID[',' eolterm];"                                                         # AUTOMATA 
-#               "States: /\s*/ list*=ID[',' eolterm];"                                                       # AUTOMATA
-#               "Transition: s0=ID ',' s1=ID act=Action tnorm=Tnorm constrs=Constraints vt=VTransforms;"     # DONE
-#               "Action: Input | Output;"                                                                    # DONE
-#               "Input: '?' name=ID varlist*=ID[',' eolterm];"                                               # DONE
-#               "Output: '!' name=ID exprs*=Expression[',' eolterm];"                                        # DONE
-#               "Expression: Expression1;"                                                                   # DONE
-#               "Expression1:       l=Expression2 (ctype='+' r=Expression1)*;"                               # DONE
-#               "Expression2:       l=Expression3 (ctype='-' r=Expression2)*;"                               # DONE
-#               "Expression3:       l=Expression4 (ctype='*' r=Expression3)*;"                               # DONE
-#               "Expression4:       l=Expression5 (ctype='/' r=Expression4)*;"                               # DONE
-#               "Expression5:      ctype=Term | '(' ins=Expression1 ')';"                                    # DONE
-#               "Term: ctype=Var | ctype=Val;"                                                               # DONE
-#               "Var: var=ID ('['indexlist+=INT[',' eolterm]  ']')?  ;"                                      # DONE
-#               "Val: val=FLOAT;"                                                                            # DONE
-#               "TrueConstraint: string=/TRUE|True|true/;"                                                   # DONE
-#               "Constraints:  /\s*/ constrs+=Constraint[',' eolterm] |   constr=TrueConstraint;"            # DONE
-#               "Constraint: BinRel | TerRel;"                                                               # DONE
-#               "BinRel: l=Expression ctype='<=' r=Expression '['delta=FLOAT']' |"                           # DONE
-#               "l=Expression ctype='='  r=Expression '['delta=FLOAT']' |"                                   # DONE
-#               "l=Expression ctype='>=' r=Expression '['delta=FLOAT']';"                                    # DONE
-#               "TerRel: first=Expression '<=' second=Expression '<=' third=Expression '['delta=FLOAT']';"   # DONE
-#               "VTransform:  var=ID '=' expr=Expression ;"                                                  # DONE
-#               "VTransforms:     /\s*/ vtransfms+=VTransform[',' eolterm] | ctype='Identity';")             # DONE
+        class Trace:
+            def __init__(self, acts):
+                self.acts = acts
+            def abstract_syntax(self):
+                return [it.abstract_syntax() for it in self.acts]
+        self.Trace = Trace
+
+        class Input:
+            def __init__(self, parent, name, vals):
+                self.parent = parent
+                self.name = name
+                if vals == None:
+                    self.vals = []
+                else:
+                    self.vals = vals
+            def abstract_syntax(self):
+                return classes['TestInput'](self.name, self.vals)
+        self.Input = Input       
+
+        class Output:
+            def __init__(self, parent, name):
+                self.parent = parent
+                self.name = name
+                print(self.name)
+            def abstract_syntax(self):
+                return classes['TestOutput'](self.name)
+        self.Output = Output
+
+    def parse_test_trace(self, test_trace_str):
+
+        alttesttracegrammar = ("Trace : acts*=Action[',' eolterm];"
+                               "Action: Input | Output;"
+                               "Input: '?' name=ID '(' vals*=FLOAT[',' eolterm] ')';"
+                               "Output: '!' (name=ID)?;")
+
+        
+        listclasses = [self.Trace, self.Input, self.Output]
+        
+        mm = metamodel_from_str(alttesttracegrammar, classes=listclasses)
+        return mm.model_from_str(test_trace_str).abstract_syntax()
 
 
+
+        
 class AutomataParser:
    
     def __init__(self, classes):

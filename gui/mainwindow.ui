@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1092</width>
-    <height>640</height>
+    <width>1088</width>
+    <height>650</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1088</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1088</width>
+    <height>650</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>AUNTY</string>
@@ -178,7 +196,7 @@
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>481</width>
+         <width>491</width>
          <height>281</height>
         </rect>
        </property>
@@ -433,7 +451,7 @@
       <string>Duplicate</string>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="textBrowser">
+    <widget class="QTextBrowser" name="trace_textBrowser">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -450,7 +468,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;?checkGender(0), ?checkAge(69), ?minute(1), ?readBPM(74), ?readRR(811), ?readRR(817), ?readRR(789), ?readRR(792), ?readRR(789), ?readRR(814), ?readRR(653), ?readRR(997), ?readRR(844), ?readRR(811), ?readRR(792), ?readRR(767), ?readRR(842), ?readRR(853), ?readRR(822), ?readRR(828), ?readRR(825), ?readRR(797), ?readRR(792), ?readRR(794), ?readRR(819), ?readRR(869), ?readRR(825), ?readRR(783), ?readRR(786), ?readRR(781), ?readRR(789), ?readRR(808), ?readRR(819), ?readRR(828), ?readRR(844), ?readRR(803), ?readRR(778), ?readRR(800), ?readRR(786), ?readRR(858), ?readRR(842), ?readRR(828), ?readRR(800), ?readRR(833), ?readRR(797), ?readRR(783), ?readRR(822), ?readRR(844), ?readRR(878), ?readRR(828), ?readRR(775), ?readRR(806), ?readRR(811), ?readRR(794), ?readRR(836), ?readRR(833), ?readRR(825), ?readRR(811), ?readRR(783), ?readRR(783), ?readRR(808), ?readRR(844), ?readRR(833), ?readRR(822), ?readRR(814), ?readRR(775), ?readRR(794), ?readRR(781), ?readRR(797), ?readRR(853), ?readRR(847), ?readRR(822), ?readRR(789), ?readRR(783), ?readRR(786), ?readRR(814), ?readRR(814), ?readRR(847), ?noMorePendingRR(1), ?minute(2), ?readBPM(74), ?readRR(836), ?readRR(811), ?readRR(781), ?readRR(772), ?readRR(789), ?readRR(803), ?readRR(839), ?readRR(825), ?readRR(817), ?readRR(775), ?readRR(797), ?readRR(792), ?readRR(800), ?readRR(817), ?readRR(856), ?readRR(831), ?readRR(789), ?readRR(781), ?readRR(792), ?readRR(831), ?readRR(825), ?readRR(828), ?readRR(833), ?readRR(822), ?readRR(797), ?readRR(781), ?readRR(792), ?readRR(811), ?readRR(861), ?readRR(847), ?readRR(817), ?readRR(792), ?readRR(789), ?readRR(792), ?readRR(811), ?readRR(825), ?readRR(844), ?readRR(856), ?readRR(808), ?readRR(769), ?readRR(797), ?readRR(800), ?readRR(819), ?readRR(836), ?readRR(819), ?readRR(828), ?readRR(800), ?readRR(781), ?readRR(778), ?readRR(811), ?readRR(825), ?readRR(864), ?readRR(828), ?readRR(792), ?readRR(789), ?readRR(800), ?readRR(792), ?readRR(814), ?readRR(836), ?readRR(836), ?readRR(822), ?readRR(769), ?readRR(753), ?readRR(797), ?readRR(819), ?readRR(811), ?readRR(833), ?readRR(828), ?readRR(783), ?readRR(739), ?readRR(833), ?readRR(781), ?readRR(831), ?readRR(864), ?noMorePendingRR(2), ?minute(3), ?readBPM(76), ?readRR(825), ?readRR(800), ?readRR(781), ?readRR(783), ?readRR(800), ?readRR(797), ?readRR(814), ?readRR(844), ?readRR(828), ?readRR(778), ?readRR(758), ?readRR(783), ?readRR(769), ?readRR(828), ?readRR(819), ?readRR(806), ?readRR(786), ?readRR(786), ?readRR(778), ?readRR(761), ?readRR(789), ?readRR(814), ?readRR(850), ?readRR(808), ?readRR(772), ?readRR(778), ?readRR(789), ?readRR(783), ?readRR(800), ?readRR(819), ?readRR(822), ?readRR(803), ?readRR(775), ?readRR(772), ?readRR(772), ?readRR(808), ?readRR(808), ?readRR(825), ?readRR(800), ?readRR(772), ?readRR(775), ?readRR(775), ?readRR(778), ?readRR(792), ?readRR(822), ?readRR(825), ?readRR(783), ?readRR(753), ?readRR(772), ?readRR(783), ?readRR(792), ?readRR(814), ?readRR(828), ?readRR(828), ?readRR(803), ?readRR(769), ?readRR(772), ?readRR(800), ?readRR(811), ?readRR(836), ?readRR(844), ?readRR(800), ?readRR(794), ?readRR(800), ?readRR(786), ?readRR(792), ?readRR(831), ?readRR(844), ?readRR(836), ?readRR(800), ?readRR(756), ?readRR(797), ?readRR(803), ?readRR(811), ?readRR(825), ?readRR(828), ?noMorePendingRR(3), ?minute(4), ?readBPM(74), ?readRR(806), ?readRR(794), ?readRR(772), ?readRR(775), ?readRR(825), ?readRR(519), ?readRR(942), ?readRR(839), ?readRR(819), ?readRR(778), ?readRR(819), ?readRR(808), ?readRR(811), ?readRR(847), ?readRR(869), ?readRR(817), ?readRR(767), ?readRR(789), ?readRR(792), ?readRR(831), ?readRR(828), ?readRR(833), ?readRR(847), ?readRR(817), ?readRR(775), ?readRR(794), ?readRR(819), ?readRR(844), ?readRR(858), ?readRR(828), ?readRR(797), ?readRR(794), ?readRR(789), ?readRR(608), ?readRR(964), ?readRR(831), ?readRR(836), ?readRR(836), ?readRR(781), ?readRR(753), ?readRR(800), ?readRR(811), ?readRR(828), ?readRR(806), ?readRR(828), ?readRR(800), ?readRR(792), ?readRR(764), ?readRR(797), ?readRR(839), ?readRR(839), ?readRR(833), ?readRR(811), ?readRR(797), ?readRR(783), ?readRR(797), ?readRR(811), ?readRR(831), ?readRR(844), ?readRR(842), ?readRR(803), ?readRR(789), ?readRR(783), ?readRR(839), ?readRR(861), ?readRR(844), ?readRR(836), ?readRR(836), ?readRR(811), ?readRR(772), ?readRR(808), ?readRR(836), ?readRR(853), ?readRR(839), ?noMorePendingRR(4), ?minute(5), ?readBPM(74),  ?readRR(825)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="trace_textEdit">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -471,7 +489,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>190</y>
+       <y>200</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -494,7 +512,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>240</x>
-       <y>190</y>
+       <y>200</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -517,7 +535,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>360</x>
-       <y>190</y>
+       <y>200</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -540,7 +558,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>190</y>
+       <y>200</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -559,7 +577,7 @@ p, li { white-space: pre-wrap; }
       </size>
      </property>
     </widget>
-    <widget class="QLabel" name="label_applied">
+    <widget class="QLabel" name="trace_label_applied">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -572,7 +590,7 @@ p, li { white-space: pre-wrap; }
       <string>Applied trace</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_pending">
+    <widget class="QLabel" name="trace_label_pending">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -592,7 +610,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1092</width>
+     <width>1088</width>
      <height>25</height>
     </rect>
    </property>
@@ -600,20 +618,71 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Automata</string>
     </property>
-    <addaction name="actionNew"/>
-    <addaction name="actionOpen"/>
-    <addaction name="actionSave"/>
+    <widget class="QMenu" name="automata_menuFile">
+     <property name="title">
+      <string>File</string>
+     </property>
+     <addaction name="automata_actionNew"/>
+     <addaction name="automata_actionOpen"/>
+     <addaction name="automata_actionSave"/>
+    </widget>
+    <widget class="QMenu" name="automata_menuAutomata">
+     <property name="title">
+      <string>Automata</string>
+     </property>
+     <addaction name="automata_actionDuplicate"/>
+     <addaction name="automata_actionRemove"/>
+    </widget>
+    <addaction name="automata_menuFile"/>
+    <addaction name="automata_menuAutomata"/>
    </widget>
    <widget class="QMenu" name="menuGeneration">
     <property name="title">
      <string>Trace generation</string>
     </property>
-    <addaction name="actionGenerate_trace"/>
+    <widget class="QMenu" name="trace_menuFile">
+     <property name="title">
+      <string>File</string>
+     </property>
+     <addaction name="trace_actionNew"/>
+     <addaction name="trace_actionOpen"/>
+     <addaction name="trace_actionSave"/>
+    </widget>
+    <widget class="QMenu" name="menuNavigation">
+     <property name="title">
+      <string>Navigation</string>
+     </property>
+     <addaction name="trace_actionFastBackward"/>
+     <addaction name="trace_actionBackward"/>
+     <addaction name="trace_actionForward"/>
+     <addaction name="trace_actionFastForward"/>
+    </widget>
+    <widget class="QMenu" name="menuTrace">
+     <property name="title">
+      <string>Trace</string>
+     </property>
+     <addaction name="trace_actionDuplicate"/>
+     <addaction name="trace_actionRemove"/>
+    </widget>
+    <addaction name="trace_menuFile"/>
+    <addaction name="menuTrace"/>
+    <addaction name="menuNavigation"/>
+    <addaction name="separator"/>
+    <addaction name="trace_actionGenerate"/>
    </widget>
    <widget class="QMenu" name="menuAnalysis">
     <property name="title">
      <string>Analysis</string>
     </property>
+    <widget class="QMenu" name="menuRegistered_outputs">
+     <property name="title">
+      <string>Registered outputs</string>
+     </property>
+     <addaction name="analysis_actionClearSelected"/>
+     <addaction name="analysis_actionClearAll"/>
+    </widget>
+    <addaction name="menuRegistered_outputs"/>
+    <addaction name="separator"/>
     <addaction name="actionStep_by_step"/>
     <addaction name="actionResults_table"/>
    </widget>
@@ -626,22 +695,20 @@ p, li { white-space: pre-wrap; }
     <string>Maestra</string>
    </property>
   </action>
-  <action name="actionOpen">
+  <action name="automata_actionOpen">
    <property name="text">
     <string>Open</string>
    </property>
+   <property name="shortcut">
+    <string/>
+   </property>
   </action>
-  <action name="actionSave">
+  <action name="automata_actionSave">
    <property name="text">
     <string>Save</string>
    </property>
   </action>
-  <action name="actionNew">
-   <property name="text">
-    <string>New</string>
-   </property>
-  </action>
-  <action name="actionGenerate_trace">
+  <action name="trace_actionGenerate">
    <property name="text">
     <string>Trace from patient</string>
    </property>
@@ -654,6 +721,76 @@ p, li { white-space: pre-wrap; }
   <action name="actionResults_table">
    <property name="text">
     <string>Results table</string>
+   </property>
+  </action>
+  <action name="trace_actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="analysis_actionClearSelected">
+   <property name="text">
+    <string>Clear selected</string>
+   </property>
+  </action>
+  <action name="analysis_actionClearAll">
+   <property name="text">
+    <string>Clear all</string>
+   </property>
+  </action>
+  <action name="automata_actionDuplicate">
+   <property name="text">
+    <string>Duplicate</string>
+   </property>
+  </action>
+  <action name="automata_actionRemove">
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </action>
+  <action name="automata_actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="trace_actionFastBackward">
+   <property name="text">
+    <string>Fast Backward</string>
+   </property>
+  </action>
+  <action name="trace_actionBackward">
+   <property name="text">
+    <string>Backward</string>
+   </property>
+  </action>
+  <action name="trace_actionForward">
+   <property name="text">
+    <string>Forward</string>
+   </property>
+  </action>
+  <action name="trace_actionFastForward">
+   <property name="text">
+    <string>Fast Forward</string>
+   </property>
+  </action>
+  <action name="trace_actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="trace_actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="trace_actionDuplicate">
+   <property name="text">
+    <string>Duplicate</string>
+   </property>
+  </action>
+  <action name="trace_actionRemove">
+   <property name="text">
+    <string>Remove</string>
    </property>
   </action>
  </widget>

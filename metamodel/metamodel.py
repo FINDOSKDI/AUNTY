@@ -1,5 +1,5 @@
-import grammar as gr
-import fuzzy as fz
+import metamodel.grammar as gr
+import metamodel.fuzzy as fz
 from copy import copy
 
 class Expression:
@@ -122,6 +122,7 @@ class VariableTransform:
     def assign(self, varstate):
         return VariableTransform(self.var, self.expr.assign(varstate))
 
+    
 class VariableTransforms:
     def __init__(self, v=None):
         if v==None:
@@ -132,7 +133,12 @@ class VariableTransforms:
         return set().union(*[e.FV() for e in self.v])
     def assign(self, varstate):
         return VariableTransforms([it.assign(varstate) for it in self.v])
-
+    def apply(self, varstate):
+        ret = copy(varstate)
+        for vt in self.v:
+            ret[Var(vt.var)] = vt.assign(varstate).expr.eval()
+        return ret
+    
 class Constraint:
     pass
 
@@ -186,7 +192,7 @@ class EqRel(BinRel):
     def FV(self):
         return set.union(self.l.FV(), self.r.FV())
     def eval(self):
-        return fz.fuzzyeq(self.r.eval(), self.delta)(self.l.eval())
+        return fz.fuzzyeq(self.l.eval(), self.r.eval(), self.delta)
     def assign(self, varstate):
        return EqRel( self.l.assign(varstate),
                      self.r.assign(varstate),
@@ -232,11 +238,11 @@ class Tnorm:
         pass
 
 class Hamacher(Tnorm):
-    def compute(a, b):
+    def compute(self, a, b):
         return fz.Hama(a,b)
 
 class Product(Tnorm):
-    def compute(a, b):
+    def compute(self, a, b):
         return a*b
 
 class Transition:
@@ -268,36 +274,115 @@ class Input:
         self.varlist = varlist
     def FV(self):
         return set()
-
+    def match(self, act):
+        if act.is_output():
+            return None
+        assert len(self.varlist) == len(act.vals)
+        return {Var(name):val for name,val in zip(self.varlist, act.vals)}
+    def get_str(self, match, varstate):
+        vals = [str(match[Var(it)]) for it in self.varlist]
+        return '?'+self.name+'('+', '.join(vals)+')'
+    
 class Output:
     def __init__(self, name, exprs):
         self.name = name
         self.exprs = exprs
     def FV(self):
         return set().union(*[e.FV() for e in self.exprs])
+    def match(self, act):
+        if act.is_input():
+            return None
+        elif act.name == None:
+            return {}
+        elif act.name == self.name:
+            return {}
+        else:
+            return None
+    def get_str(self, match, varstate):
+        vals = [str(it.assign(varstate).eval()) for it in self.exprs]
+        return '!'+self.name+'('+', '.join(vals)+')'
+
+    
+# class ExecutionState:
+#     def __init__(self, states):
+#         self.states = states
+
+# def actionStep(automa, act, confiDic, variDic):  # ????
+#     """
+#     automa: model
+#     act: action name
+#     confiDic: dictionary mapping states to confidence values
+#     variDic: dictionary mapping variable names to values 
+#                 ---- actionState        ( JUST ACTION VARIABLES )
+#     """
+# #    actionDic = actionDic(automa)  # ????
+#     newConfi = {k:0.0 for k in confiDic}
+#     deciDic = {k:None for k in confiDic}
+#     for tr in automa.tr:
+#         if tr.act == act:
+#             if Hama(Ceval(Csubst2(tr.constr, variDic)), confiDic[tr.s1]) > newConfi[tr.s2]: # asdfjhieuwhfaisen
+#                 newConfi[tr.s2] = Hama(Ceval(Csubst2(tr.constr, variDic)), confiDic[tr.s1])
+#                 deciDic[tr.s2] = tr
+#     return newConfi, deciDic # los ! tienen C true, los ? tienen vartrans id
         
-class ExecutionState:
-    pass
-
 class ExecutionSequence:
+    def __init__(self, automata, inistate, inivarstate):
+        self.v = [{inistate:{'eps':1,'varstate':inivarstate, 'prevstate':None, 'action_str':None }}]
+        self.automata = automata
+        self.alive = True
+        self.last_consolidated = 0
+    def step(self, tact):
+        prev = self.v[-1]
+        next = {}
+        for tr in self.automata.transitions:
+            match = tr.act.match(tact)
+            if match == None:
+                continue
+            conf = tr.constr.assign(match).eval()
+            if tr.s0 not in prev:
+                continue
+            goc = self.automata.tnorm.compute(conf,
+                                              prev[tr.s0]['eps'])
+            if tr.s1 not in next or next[tr.s1]['eps'] < goc:
+                environment = prev[tr.s0]['varstate']
+                for it in match:
+                    environment[it] = match[it]
+                next[tr.s1] = {}
+                next[tr.s1]['eps'] = goc
+                next[tr.s1]['varstate'] = tr.vt.apply(environment)
+                next[tr.s1]['prevstate'] = tr.s0
+                next[tr.s1]['action_str'] =  tr.act.get_str(match,prev[tr.s0]['varstate'])
+        self.v = self.v + [next]
+        if next == {}:
+            self.alive = False
+        if len(next) == 1:
+            self.last_consolidated = len(self.v)-1
+    def __str__(self):
+        return '\n\n'.join(['\n'.join(
+            [str(k)+':'+', '.join(
+                [str(kk)+':'+str(it[k][kk]) for kk in it[k]]) for k in it]) for it in self.v])
+        
+class OutputLog: # array? # MEJOR QUE SEA UN SET
     pass
 
-class OutputLog:
-    pass
+# class VariableState:
+#     pass # posiblemente sea un diccionario suelto
 
-class VariableState:
-    pass # posiblemente sea un diccionario suelto
+# class Trace:
+#     pass # admitimos ! como test action
 
-class Trace:
-    pass # admitimos ! como test action
-
-class AutomatonContext:
-    pass # enabled, tracecontexts, hash
+class AutomatonContext: #    pass # enabled, tracecontexts, hash
+    def __init__(self, tracecontexts=[]):
+        self.tracecontexts = tracecontexts
 
 class TraceContext:
-    pass # executionsequence, selectedstate, automatoncontext, upcoming_sequence
+    def __init__(self, exe, selstate, automata, upcoming_sequence):
+        self.exe = exe
+        self.selstate = selstate
+        self.automata = automata
+        self.upcoming_sequence = upcoming_sequence
+        #        pass # executionsequence, selectedstate, automatoncontext, upcoming_sequence
     
-### Test
 classes = {'Addition':Addition,
            'Subtraction':Subtraction,
            'Multiplication':Multiplication,
@@ -319,31 +404,51 @@ classes = {'Addition':Addition,
            'VariableTransform':VariableTransform,
            'VariableTransforms':VariableTransforms}
 
+class TestInput:
+    def __init__(self, name, vals):
+        self.name = name
+        self.vals = vals
+    def is_input(self):
+        return True
+    def is_output(self):
+        return False
+        
+class TestOutput:
+    def __init__(self, name):
+        self.name = name
+    def is_input(self):
+        return False
+    def is_output(self):
+        return True
+
+ttclasses = {'TestInput':TestInput, 'TestOutput':TestOutput}
+
 ep = gr.AutomataParser(classes)
-d = """HAMACHER
-X,Y,Z
-s0,s1,s2,s3
-s0
-s0,s1
-!O1 X*9
-HAMACHER
-X<=4 [0.62]
-Identity
-s0,s2
-?Input2 X,Y,Z
-HAMACHER true
-X=Y*Z/3, Y=0
-s0,s3
-!O1 X*9
-HAMACHER
-X<=4 [0.62]
-Identity
-s0,s3
-?Input2 X,Y,Z
-HAMACHER
-Y=X+1 [0.2], Z<=5<=X [0.7]
-X=Y*Z/3, Y=0"""
-ex = ep.parse_automata(d)
+tp = gr.TestTraceParser(ttclasses)
+# d = """HAMACHER
+# X,Y,Z
+# s0,s1,s2,s3
+# s0
+# s0,s1
+# !O1 X*9
+# HAMACHER
+# X<=4 [0.62]
+# Identity
+# s0,s2
+# ?Input2 X,Y,Z
+# HAMACHER true
+# X=Y*Z/3, Y=0
+# s0,s3
+# !O1 X*9
+# HAMACHER
+# X<=4 [0.62]
+# Identity
+# s0,s3
+# ?Input2 X,Y,Z
+# HAMACHER
+# Y=X+1 [0.2], Z<=5<=X [0.7]
+# X=Y*Z/3, Y=0"""
+# ex = ep.parse_automata(d)
 #ex = ep.parse_automata("5+5-5*8/8")
 #res ='Addition(x,Addition(Subtraction(5.0,y),Subtraction(Multiplication(y,2.0),Division(f,2.0))))'
 #assert str(ep.parse_automata('x+5-y+y*2-f/2')) == res
@@ -377,21 +482,3 @@ ex = ep.parse_automata(d)
 #         '"]\n'
 #     return res + "}"
 
-# def actionStep(automa, act, confiDic, variDic):  # ????
-#     """
-#     automa: model
-#     act: action name
-#     confiDic: dictionary mapping states to confidence values
-#     variDic: dictionary mapping variable names to values 
-#                 ---- actionState        ( JUST ACTION VARIABLES )
-#     """
-# #    actionDic = actionDic(automa)  # ????
-#     newConfi = {k:0.0 for k in confiDic}
-#     deciDic = {k:None for k in confiDic}
-#     for tr in automa.tr:
-#         if tr.act == act:
-#             if Hama(Ceval(Csubst2(tr.constr, variDic)), confiDic[tr.s1]) > newConfi[tr.s2]: # asdfjhieuwhfaisen
-#                 newConfi[tr.s2] = Hama(Ceval(Csubst2(tr.constr, variDic)), confiDic[tr.s1])
-#                 deciDic[tr.s2] = tr
-                
-#     return newConfi, deciDic # los ! tienen C true, los ? tienen vartrans id
